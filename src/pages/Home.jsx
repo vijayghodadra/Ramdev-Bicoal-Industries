@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion, useMotionValue, useSpring, AnimatePresence } from 'framer-motion';
 import { 
   ArrowRight, ShieldCheck, Cpu, Users, Truck, CheckCircle2, 
-  Award, Settings, Activity, Zap, ChevronRight
+  Award, Settings, Activity, Zap, ChevronRight, ChevronLeft
 } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -17,9 +17,13 @@ import chanaImg from '../assets/Chana.jpg';
 import tuwarImg from '../assets/Tuwar.jpg';
 import groundnutImg from '../assets/Groundnut.jpeg';
 import wheatImg from '../assets/Wheat.png';
+import vadiImg from '../assets/Vadi.jpeg';
+import heroVideo from '../assets/HeroVideo.mp4';
+import memorialImg from '../assets/Memorial.jpeg';
 
 const slideConfig = [
   {
+    type: 'image',
     image: somnathImg,
     fit: 'object-contain p-2 sm:p-0',
     position: 'object-center',
@@ -27,6 +31,7 @@ const slideConfig = [
     showBlurOnDesktop: true
   },
   {
+    type: 'image',
     image: cardImg,
     fit: 'object-contain p-2 sm:p-0',
     position: 'object-center',
@@ -34,6 +39,7 @@ const slideConfig = [
     showBlurOnDesktop: true
   },
   {
+    type: 'image',
     image: somnath1Img,
     fit: 'object-contain p-2 sm:p-0',
     position: 'object-center',
@@ -41,30 +47,35 @@ const slideConfig = [
     showBlurOnDesktop: true
   },
   {
+    type: 'image',
     image: machinemayorImg,
     fit: 'object-contain',
     position: 'object-center',
     bg: 'bg-black'
   },
   {
+    type: 'image',
     image: chanaImg,
     fit: 'object-cover',
     position: 'object-center',
     bg: 'bg-[#15181E]'
   },
   {
+    type: 'image',
     image: tuwarImg,
     fit: 'object-contain border-[12px] border-white sm:border-[20px]',
     position: 'object-center',
     bg: 'bg-white'
   },
   {
+    type: 'image',
     image: groundnutImg,
     fit: 'object-cover',
     position: 'object-center',
     bg: 'bg-[#15181E]'
   },
   {
+    type: 'image',
     image: wheatImg,
     fit: 'object-cover',
     position: 'object-center',
@@ -95,7 +106,7 @@ export default function Home() {
     if (isHovered) return;
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slideConfig.length);
-    }, 2500);
+    }, 3500);
     return () => clearInterval(interval);
   }, [isHovered]);
 
@@ -270,14 +281,14 @@ export default function Home() {
               </span>
             </motion.div>
 
-            {/* 2. Image Slideshow Banner (Just images, size-locked aspect ratio and smooth horizontal scroll) */}
+            {/* 2. Media Slideshow Banner (Images + Video + Controls) */}
             <div 
-              className="w-full relative px-2 my-3"
+              className="w-full relative px-2 my-3 group"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >
               {/* Slides container - locked to cinematic aspect ratio */}
-              <div className="w-full aspect-[16/10] sm:aspect-[2.6/1] max-h-[220px] sm:max-h-[240px] md:max-h-[260px] overflow-hidden rounded-[24px] relative shadow-premium">
+              <div className="w-full aspect-[16/10] sm:aspect-[2.6/1] max-h-[220px] sm:max-h-[240px] md:max-h-[260px] overflow-hidden rounded-[24px] relative shadow-premium bg-[#15181E]">
                 <AnimatePresence initial={false} mode="popLayout">
                   <motion.div
                     key={currentSlide}
@@ -288,21 +299,66 @@ export default function Home() {
                     className={`absolute inset-0 w-full h-full flex items-center justify-center overflow-hidden transition-colors duration-500 ${slideConfig[currentSlide].bg}`}
                   >
                     {/* Dynamic ambient blur backdrop ONLY for specific desktop images */}
-                    {slideConfig[currentSlide].showBlurOnDesktop && (
+                    {slideConfig[currentSlide].showBlurOnDesktop && slideConfig[currentSlide].type !== 'video' && (
                       <img
                         src={slideConfig[currentSlide].image}
                         alt=""
                         className="hidden sm:block absolute inset-0 w-full h-full object-cover blur-3xl opacity-35 scale-110 pointer-events-none"
                       />
                     )}
-                    {/* Sharp main image - size-locked and custom-fitted */}
-                    <img
-                      src={slideConfig[currentSlide].image}
-                      alt={`Somnath slide ${currentSlide}`}
-                      className={`relative z-10 w-full h-full ${slideConfig[currentSlide].fit} ${slideConfig[currentSlide].position}`}
-                    />
+
+                    {/* Render Video or Image */}
+                    {slideConfig[currentSlide].type === 'video' ? (
+                      <video
+                        src={slideConfig[currentSlide].video}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className={`relative z-10 w-full h-full ${slideConfig[currentSlide].fit} ${slideConfig[currentSlide].position}`}
+                      />
+                    ) : (
+                      <img
+                        src={slideConfig[currentSlide].image}
+                        alt={`Somnath slide ${currentSlide}`}
+                        className={`relative z-10 w-full h-full ${slideConfig[currentSlide].fit} ${slideConfig[currentSlide].position}`}
+                      />
+                    )}
                   </motion.div>
                 </AnimatePresence>
+
+                {/* Left & Right Chevron Controls */}
+                <button
+                  type="button"
+                  onClick={handlePrevSlide}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 z-30 w-9 h-9 rounded-full bg-black/60 hover:bg-accent hover:text-primary text-white border border-white/20 flex items-center justify-center transition-all duration-300 backdrop-blur-md opacity-80 sm:opacity-0 group-hover:opacity-100 cursor-pointer"
+                  aria-label="Previous slide"
+                >
+                  <ChevronLeft size={18} />
+                </button>
+                <button
+                  type="button"
+                  onClick={handleNextSlide}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 z-30 w-9 h-9 rounded-full bg-black/60 hover:bg-accent hover:text-primary text-white border border-white/20 flex items-center justify-center transition-all duration-300 backdrop-blur-md opacity-80 sm:opacity-0 group-hover:opacity-100 cursor-pointer"
+                  aria-label="Next slide"
+                >
+                  <ChevronRight size={18} />
+                </button>
+
+                {/* Navigation Dot Indicators */}
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-30 flex items-center space-x-1.5 px-3 py-1 bg-black/50 backdrop-blur-md rounded-full border border-white/10">
+                  {slideConfig.map((_, idx) => (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={() => setCurrentSlide(idx)}
+                      className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                        currentSlide === idx ? 'w-5 bg-accent' : 'w-1.5 bg-white/40 hover:bg-white'
+                      }`}
+                      aria-label={`Go to slide ${idx + 1}`}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
 
@@ -502,6 +558,88 @@ export default function Home() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4.5 HERITAGE, OPERATIONS & MEMORIAL SHOWCASE ROW */}
+      <section className="py-14 sm:py-20 bg-[#0F1115] border-t border-white/5 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="space-y-3 sm:space-y-4 mb-8 sm:mb-12">
+            <span className="text-accent font-bold tracking-widest text-[10px] sm:text-xs uppercase block font-sans">
+              Heritage &amp; Devotion
+            </span>
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight font-display">
+              Our Roots &amp; Blessings
+            </h2>
+            <div className="h-[2px] w-16 sm:w-20 bg-accent rounded" />
+          </div>
+
+          {/* 3 Items Grid / Row Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-stretch">
+            {/* Item 1: Thakarsibapa ni Vadi */}
+            <div className="group relative rounded-2xl overflow-hidden border border-white/10 bg-[#181B22] shadow-premium flex flex-col hover:border-accent/30 transition-all duration-300">
+              <div className="relative h-56 sm:h-72 overflow-hidden bg-black flex items-center justify-center p-1">
+                <img 
+                  src={vadiImg} 
+                  alt="ઠાકરશીબાપાની વાડી" 
+                  className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700" 
+                />
+              </div>
+              <div className="p-5 sm:p-6 space-y-2 flex-1 flex flex-col justify-between">
+                <div className="space-y-1.5">
+                  <span className="text-[10px] font-bold text-accent uppercase tracking-widest font-sans block">Our Agricultural Roots</span>
+                  <h3 className="font-display font-extrabold text-lg sm:text-xl text-white">ઠાકરશીબાપાની વાડી</h3>
+                  <p className="text-xs text-gray-400 font-light leading-relaxed">
+                    શ્રમ, સંસ્કાર અને સંપન્નતાની ધરતી... Dedicated agricultural heritage of Somnath Industries.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Item 2: Jay Somnath Mahadev Video (Full aspect ratio preserved, zero cutoff) */}
+            <div className="group relative rounded-2xl overflow-hidden border border-white/10 bg-[#181B22] shadow-premium flex flex-col hover:border-accent/30 transition-all duration-300">
+              <div className="relative h-56 sm:h-72 overflow-hidden bg-black flex items-center justify-center p-1">
+                <video 
+                  src={heroVideo} 
+                  controls 
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline
+                  className="w-full h-full object-contain" 
+                />
+              </div>
+              <div className="p-5 sm:p-6 space-y-2 flex-1 flex flex-col justify-between">
+                <div className="space-y-1.5">
+                  <span className="text-[10px] font-bold text-accent uppercase tracking-widest font-sans block">Divine Blessings</span>
+                  <h3 className="font-display font-extrabold text-lg sm:text-xl text-white">જય સોમનાથ મહાદેવ</h3>
+                  <p className="text-xs text-gray-400 font-light leading-relaxed">
+                    Jay Somnath Mahadev... 🙏 Sacred blessings and Somnath Mahadev temple view.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Item 3: In Loving Memory Memorial */}
+            <div className="group relative rounded-2xl overflow-hidden border border-accent/25 bg-[#181B22] shadow-premium flex flex-col hover:border-accent/60 transition-all duration-300">
+              <div className="relative h-56 sm:h-72 overflow-hidden bg-black flex items-center justify-center p-1">
+                <img 
+                  src={memorialImg} 
+                  alt="સ્વ. મગનભાઈ ઠાકરશીભાઈ ગોંડલિયા" 
+                  className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700" 
+                />
+              </div>
+              <div className="p-5 sm:p-6 space-y-2 flex-1 flex flex-col justify-between">
+                <div className="space-y-1.5">
+                  <span className="text-[10px] font-bold text-accent uppercase tracking-widest font-sans block">In Loving Memory</span>
+                  <h3 className="font-display font-extrabold text-base sm:text-lg text-white">સ્વ. મગનભાઈ ઠાકરશીભાઈ ગોંડલિયા</h3>
+                  <p className="text-xs text-gray-300 font-light leading-relaxed">
+                    સોમનાથના રસ્તે જાતા એવું લાગ્યા કરે છે... હજી કોઈની યાદ સતત સતાવ્યા કરે છે... જય સોમનાથ મહાદેવ... 🙏
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
