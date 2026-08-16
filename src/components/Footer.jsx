@@ -23,7 +23,7 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-xs text-gray-400 leading-relaxed max-w-sm">
-              Providing premium agriculture grain processing solutions across Gujarat. We specialize in high-precision optical sorting, sizing, and automated packing.
+              Manufacturing high-quality 90mm biomass briquettes from 100% pure groundnut husk. Your trusted eco-friendly industrial fuel partner in Gujarat.
             </p>
             <div className="text-accent font-display text-xs font-semibold uppercase tracking-wider">
               Precision. Quality. Reliability.

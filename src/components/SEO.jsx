@@ -7,7 +7,7 @@ export default function SEO({ title, description, keywords, schema }) {
     if (title) {
       document.title = `${title} | ${baseTitle}`;
     } else {
-      document.title = `${baseTitle} | Premium Agriculture Sorting & Processing Solutions`;
+      document.title = `${baseTitle} | Premium 90mm Biomass Briquettes`;
     }
 
     // Set Meta Description
@@ -15,7 +15,7 @@ export default function SEO({ title, description, keywords, schema }) {
     if (metaDesc) {
       metaDesc.setAttribute(
         'content',
-        description || 'Ramdev Biocoal Industries provides premium agriculture sorting, grading, and packing solutions across Gujarat. Built on trust, driven by quality.'
+        description || 'Ramdev Biocoal Industries manufactures high-quality 90mm biomass briquettes using 100% pure groundnut husk. An eco-friendly, high-density fuel solution from Gujarat.'
       );
     }
 
