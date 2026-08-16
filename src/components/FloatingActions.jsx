@@ -32,7 +32,7 @@ export default function FloatingActions() {
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ delay: 0.1, type: 'spring', stiffness: 260, damping: 20 }}
-        className="w-14 h-14 bg-[#181B22] text-accent hover:bg-accent hover:text-primary rounded-full flex items-center justify-center shadow-premium border border-white/5 hover:border-accent transition-all duration-300 relative group cursor-pointer"
+        className="w-14 h-14 bg-[#181B22] text-accent hover:bg-accent hover:text-primary rounded-full flex items-center justify-center shadow-premium border border-white/10 hover:border-accent transition-all duration-300 relative group cursor-pointer"
         aria-label="Call Now"
       >
         <Phone size={20} className="fill-current" />
@@ -67,7 +67,7 @@ export default function FloatingActions() {
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0, opacity: 0, y: 15 }}
             transition={{ duration: 0.2 }}
-            className="w-12 h-12 bg-[#181B22] text-white border border-white/5 hover:border-accent hover:bg-accent hover:text-primary rounded-full flex items-center justify-center shadow-premium transition-all duration-300 group cursor-pointer"
+            className="w-12 h-12 bg-[#181B22] text-white border border-white/10 hover:border-accent hover:bg-accent hover:text-primary rounded-full flex items-center justify-center shadow-premium transition-all duration-300 group cursor-pointer"
             aria-label="Scroll to top"
           >
             <ArrowUp size={18} className="group-hover:-translate-y-1 transition-transform duration-300" />

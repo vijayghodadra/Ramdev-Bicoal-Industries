@@ -145,7 +145,7 @@ export default function Gallery() {
       />
 
       {/* Page Header Banner */}
-      <section className="relative pt-36 pb-20 overflow-hidden border-b border-white/5">
+      <section className="relative pt-36 pb-20 overflow-hidden border-b border-white/10">
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-15"
           style={{ backgroundImage: `url('https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1200&auto=format&fit=crop')` }}
@@ -168,7 +168,7 @@ export default function Gallery() {
       </section>
 
       {/* Filter Buttons */}
-      <section className="bg-[#181B22]/60 backdrop-blur-md border-b border-white/5 py-6 sticky top-20 z-30 shadow-premium">
+      <section className="bg-[#181B22]/60 backdrop-blur-md border-b border-white/10 py-6 sticky top-20 z-30 shadow-premium">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-start lg:justify-center overflow-x-auto space-x-3 pb-3 sm:pb-0 no-scrollbar">
             {categories.map((cat) => (
@@ -181,7 +181,7 @@ export default function Gallery() {
                 className={`px-5 py-2.5 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all duration-300 whitespace-nowrap cursor-pointer border ${
                   filter === cat.id
                     ? 'bg-accent text-primary border-accent shadow-premium'
-                    : 'bg-[#181B22] text-gray-400 border-white/5 hover:border-accent/40 hover:text-white'
+                    : 'bg-[#181B22] text-gray-400 border-white/10 hover:border-accent/40 hover:text-white'
                 }`}
               >
                 {cat.label}
@@ -206,7 +206,7 @@ export default function Gallery() {
                   transition={{ duration: 0.3 }}
                   key={item.title}
                   onClick={() => setLightboxIndex(idx)}
-                  className="group relative rounded-xl overflow-hidden shadow-premium cursor-pointer border border-white/5 bg-[#181B22] h-72"
+                  className="group relative rounded-xl overflow-hidden shadow-premium cursor-pointer border border-white/10 bg-[#181B22] h-72"
                 >
                   <img 
                     src={item.image} 
@@ -256,7 +256,7 @@ export default function Gallery() {
             className="fixed inset-0 z-50 bg-[#0F1115]/95 backdrop-blur-md flex flex-col justify-between"
           >
             {/* Header controls */}
-            <div className="p-6 flex items-center justify-between text-white border-b border-white/5">
+            <div className="p-6 flex items-center justify-between text-white border-b border-white/10">
               <div>
                 <h4 className="font-display font-bold text-base text-white">
                   {filteredItems[lightboxIndex].title}
@@ -272,7 +272,7 @@ export default function Gallery() {
                 </span>
                 <button
                   onClick={() => setLightboxIndex(null)}
-                  className="p-2 bg-white/5 hover:bg-white/10 rounded-lg text-white transition-colors cursor-pointer border border-white/5"
+                  className="p-2 bg-white/5 hover:bg-white/10 rounded-lg text-white transition-colors cursor-pointer border border-white/10"
                   aria-label="Close Lightbox"
                 >
                   <X size={18} />
@@ -286,7 +286,7 @@ export default function Gallery() {
               {/* Previous Button */}
               <button
                 onClick={handlePrev}
-                className="absolute left-6 z-10 p-3 bg-[#181B22] border border-white/5 hover:border-accent/40 rounded-full text-white transition-colors cursor-pointer"
+                className="absolute left-6 z-10 p-3 bg-[#181B22] border border-white/10 hover:border-accent/40 rounded-full text-white transition-colors cursor-pointer"
                 aria-label="Previous Image"
               >
                 <ChevronLeft size={20} />
@@ -300,13 +300,13 @@ export default function Gallery() {
                 transition={{ duration: 0.2 }}
                 src={filteredItems[lightboxIndex].image}
                 alt={filteredItems[lightboxIndex].title}
-                className="max-h-[70vh] max-w-full md:max-w-4xl object-contain rounded shadow-premium border border-white/5"
+                className="max-h-[70vh] max-w-full md:max-w-4xl object-contain rounded shadow-premium border border-white/10"
               />
 
               {/* Next Button */}
               <button
                 onClick={handleNext}
-                className="absolute right-6 z-10 p-3 bg-[#181B22] border border-white/5 hover:border-accent/40 rounded-full text-white transition-colors cursor-pointer"
+                className="absolute right-6 z-10 p-3 bg-[#181B22] border border-white/10 hover:border-accent/40 rounded-full text-white transition-colors cursor-pointer"
                 aria-label="Next Image"
               >
                 <ChevronRight size={20} />
@@ -315,7 +315,7 @@ export default function Gallery() {
             </div>
 
             {/* Bottom info footer */}
-            <div className="p-6 text-center text-[10px] uppercase tracking-widest text-gray-500 font-bold font-sans border-t border-white/5">
+            <div className="p-6 text-center text-[10px] uppercase tracking-widest text-gray-500 font-bold font-sans border-t border-white/10">
               <span>Use Left/Right arrow keys to navigate, Esc to close.</span>
             </div>
 

@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 export default function SEO({ title, description, keywords, schema }) {
   useEffect(() => {
     // Set Document Title
-    const baseTitle = 'Somnath Industries';
+    const baseTitle = 'Ramdev Biocoal Industries';
     if (title) {
       document.title = `${title} | ${baseTitle}`;
     } else {
@@ -15,7 +15,7 @@ export default function SEO({ title, description, keywords, schema }) {
     if (metaDesc) {
       metaDesc.setAttribute(
         'content',
-        description || 'Somnath Industries provides premium agriculture sorting, grading, and packing solutions across Gujarat. Built on trust, driven by quality.'
+        description || 'Ramdev Biocoal Industries provides premium agriculture sorting, grading, and packing solutions across Gujarat. Built on trust, driven by quality.'
       );
     }
 
@@ -24,7 +24,7 @@ export default function SEO({ title, description, keywords, schema }) {
     if (metaKeywords) {
       metaKeywords.setAttribute(
         'content',
-        keywords || 'Somnath Industries, Peanut Sorting, Chana Sorting, Tuwar Grading, Wheat Sorting, Agricultural Packing, Gujarat Agriculture Processing, Sorting Machinery'
+        keywords || 'Ramdev Biocoal Industries, Peanut Sorting, Chana Sorting, Tuwar Grading, Wheat Sorting, Agricultural Packing, Gujarat Agriculture Processing, Sorting Machinery'
       );
     }
 

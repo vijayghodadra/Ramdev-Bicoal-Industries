@@ -1,6 +1,6 @@
 @echo off
 echo ==========================================
-echo Pushing Somnath Industries to GitHub
+echo Pushing Ramdev Biocoal Industries to GitHub
 echo ==========================================
 
 :: Check if git is initialized
@@ -30,7 +30,7 @@ git add .
 
 :: Commit
 echo Committing files...
-git commit -m "Initial commit of Somnath Industries website"
+git commit -m "Initial commit of Ramdev Biocoal Industries website"
 
 :: Rename branch to main
 echo Setting branch to main...

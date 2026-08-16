@@ -2,113 +2,29 @@ import { motion } from 'framer-motion';
 import { CheckCircle2, FileSpreadsheet, Layers, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
-import { getImageUrl } from '../utils/imageHelper';
+import rawImg from '../assets/RAW.jpg';
 
 export default function Products() {
   const products = [
     {
-      id: 'peanut',
-      name: 'Peanuts(સીંગદાણા)',
-      variety: 'Bold, Java & TJ Varieties',
-      image: getImageUrl('peanut'),
-      description: 'Sourced from the premium groundnut belt of Saurashtra, our peanuts undergo rigid aspirator cleaning, multi-deck size grading, and dual-camera optical sorting to separate discolored, moldy, or shriveled kernels.',
+      id: 'briquettes',
+      name: '90mm Groundnut Biomass Briquettes',
+      variety: '100% Pure Groundnut Husk',
+      image: rawImg,
+      description: 'Manufactured exclusively from 100% pure groundnut husk, our high-density 90mm biomass briquettes provide a reliable, standardized alternative to fossil fuels like coal and lignite. By adhering strictly to a single raw material approach, we eliminate batch-to-batch calorific variance, preventing furnace clogging and ensuring uniform thermal performance.',
       applications: [
-        'Peanut Butter Manufacturing: Grade-controlled splits and counts.',
-        'Direct Snacking & Roasting: Premium large-size bold peanuts.',
-        'Oil Extraction Mills: Size-rejected splits with high oil content.',
-        'Confectionery & Bakery: Java kernels for candy decoration.'
+        'Industrial Boilers: Provides sustained high flame for continuous thermal operations.',
+        'Textile & Chemical Mills: Reliable, consistent heat output without temperature drops.',
+        'Eco-Friendly Fuel Switch: Drastically reduces carbon emissions compared to fossil fuels.',
+        'Ash Management: Low ash content (8%) ensures minimal waste disposal efforts.'
       ],
       specifications: [
-        { name: 'Moisture', value: '7.0% Maximum' },
-        { name: 'Purity Level', value: '99.9% Minimum' },
-        { name: 'Admixture', value: '0.5% Maximum' },
-        { name: 'Aflatoxin', value: 'Below 5 ppb (Export Compliant)' },
-        { name: 'Bold Counts', value: '38/42, 40/50, 50/60, 60/70 Ounce' },
-        { name: 'Java Counts', value: '50/60, 60/70, 70/80, 80/90 Ounce' }
-      ]
-    },
-    {
-      id: 'chana',
-      name: 'Chickpeas(ચણા)',
-      variety: 'Bengal Gram / Desi varieties',
-      image: getImageUrl('chana'),
-      description: 'Our Chana processing isolates whole, healthy grains from broken pieces and dust clods. Size graders ensure uniform diameter sorting, which is critical for packaging consistency and predictable cooking times.',
-      applications: [
-        'Besan (Gram Flour) Mills: Cleaned whole grains for premium grade flour.',
-        'Dal Splitting Units: Uniformly sized grains for high Dal yield.',
-        'Edible Wholesalers: Polished, dust-free packaging for retail grocery.',
-        'Sprout & Food Processing: High-germination grade seeds.'
-      ],
-      specifications: [
-        { name: 'Moisture', value: '9.0% Maximum' },
-        { name: 'Foreign Matter', value: '0.5% Maximum' },
-        { name: 'Broken Seeds', value: '1.0% Maximum' },
-        { name: 'Weeviled Seeds', value: '0.2% Maximum' },
-        { name: 'Purity Level', value: '99.5% Minimum' },
-        { name: 'Sizing Grades', value: '6mm, 7mm, 8mm screen sorts' }
-      ]
-    },
-    {
-      id: 'tuwar',
-      name: 'Pigeon Peas(તુવેર)',
-      variety: 'Whole Pigeon Peas / Red & White varieties',
-      image: getImageUrl('tuwar'),
-      description: 'Processed under strict sanitization settings, our whole Tuwar grains undergo vibratory separation to eliminate clay balls, empty seed shells, and weed seeds. This ensures a clean feed for Dal processing mills.',
-      applications: [
-        'Dal Milling Operations: De-stoned whole peas ready for dehulling.',
-        'Wholesale Packaging: Clean, standardized whole peas for retail brands.',
-        'Canned Food Packaging: Grade-A whole grains for food manufacturing.',
-        'Animal Feed Blends: Lower-grade splits and shell screenings.'
-      ],
-      specifications: [
-        { name: 'Moisture', value: '10.0% Maximum' },
-        { name: 'Admixture', value: '0.5% Maximum' },
-        { name: 'Under-sized Seeds', value: '1.5% Maximum' },
-        { name: 'Damaged / Discolored', value: '1.0% Maximum' },
-        { name: 'Purity Level', value: '99.0% Minimum' },
-        { name: 'Cleaning Pass', value: 'Dual-pass Aspirator & Destoner' }
-      ]
-    },
-    {
-      id: 'wheat',
-      name: 'Wheat(ઘઉં)',
-      variety: 'Lokwan, Tukda & Sharbati Varieties',
-      image: getImageUrl('wheat'),
-      description: 'Processed under high-precision cleaning configurations, our wheat grains are separated from chaff, dust, broken seeds, and foreign stones. Dual-pass camera sorters ensure consistent kernel quality for milling and direct export.',
-      applications: [
-        'Flour Milling Units: Calibrated whole grains yielding high flour extraction.',
-        'Direct Snacking & Roasting: Premium grains sorted for puffed wheat and snacks.',
-        'Export Cargoes: Bulk consignments graded to meet international admixture limits.',
-        'Premium Retail Packs: Polished, dust-free whole grains for direct packaging.'
-      ],
-      specifications: [
-        { name: 'Moisture', value: '11.0% Maximum' },
-        { name: 'Foreign Matter', value: '0.25% Maximum' },
-        { name: 'Weeviled Grains', value: '0.5% Maximum' },
-        { name: 'Purity Level', value: '99.5% Minimum' },
-        { name: 'Gluten Content', value: '9.0% - 11.5% Range' },
-        { name: 'Cleaning Pass', value: 'Vibratory Grader & Destoner' }
-      ]
-    },
-    {
-      id: 'kabuli',
-      name: 'Garbanzo beans(કાબુલી ચણા)',
-      variety: 'Dollar & Kabuli Varieties',
-      image: getImageUrl('kabuli'),
-      description: 'Our Garbanzo Beans (Kabuli Chana) processing isolates large, bold white chickpeas from broken seeds, dust clods, and foreign material. High-resolution optical color sorting ensures premium white color consistency and zero blemish rates, conforming to strict international export standards.',
-      applications: [
-        'International Exports: Premium bold grades ready for direct packaging.',
-        'Canned & Packaged Foods: Uniformly sized beans for consistent hydration.',
-        'Hummus Manufacturers: Cleaned white chickpeas with controlled moisture.',
-        'Wholesale Distribution: Polished, dust-free bags for bulk packaging.'
-      ],
-      specifications: [
-        { name: 'Moisture', value: '9.0% Maximum' },
-        { name: 'Purity Level', value: '99.7% Minimum' },
-        { name: 'Admixture', value: '0.25% Maximum' },
-        { name: 'Broken Seeds', value: '1.0% Maximum' },
-        { name: 'Weeviled Seeds', value: '0.1% Maximum' },
-        { name: 'Sizing Grades', value: '7mm, 8mm, 9mm, 10mm+ Sizes' }
+        { name: 'Calorific Value', value: '~4000 kcal/kg (±200)' },
+        { name: 'Ash Content', value: '8% (±2%)' },
+        { name: 'Moisture Content', value: '10% (±2%)' },
+        { name: 'Volatile Matter', value: '65–70%' },
+        { name: 'Combustion Efficiency', value: 'High & Sustained Flame' },
+        { name: 'Briquette Size', value: '90 mm Diameter' }
       ]
     }
   ];
@@ -117,14 +33,14 @@ export default function Products() {
     <div className="relative bg-[#0F1115] text-white">
       <SEO 
         title="Our Products" 
-        description="View agricultural products processed by Somnath Industries: Peanuts(સીંગદાણા), Chickpeas(ચણા), Pigeon Peas(તુવેર), Wheat(ઘઉં), and Garbanzo beans(કાબુલી ચણા). Export-grade cleaning, sorting, and grading parameters."
+        description="View our 90mm biomass briquettes manufactured exclusively from 100% groundnut husk. Providing a clean, renewable alternative to coal for industrial boilers."
       />
 
       {/* Page Header Banner */}
-      <section className="relative pt-36 pb-20 overflow-hidden border-b border-white/5">
+      <section className="relative pt-36 pb-20 overflow-hidden border-b border-white/10">
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-15"
-          style={{ backgroundImage: `url('https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1200&auto=format&fit=crop')` }}
+          style={{ backgroundImage: `url(${rawImg})` }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0F1115]/50 to-[#0F1115]" />
         
@@ -138,7 +54,7 @@ export default function Products() {
           </motion.h1>
           <div className="h-[2px] w-24 bg-accent mx-auto" />
           <p className="text-gray-400 text-sm max-w-xl mx-auto font-light">
-            Providing export-quality, graded peanuts and pulses to domestic and international wholesalers.
+            Providing export-quality 90mm groundnut husk biomass briquettes to industrial plants and boiler operators.
           </p>
         </div>
       </section>
@@ -155,7 +71,7 @@ export default function Products() {
                   key={product.id}
                   id={product.id}
                   className={`grid grid-cols-1 lg:grid-cols-12 gap-12 items-start scroll-mt-28 ${
-                    idx > 0 ? 'border-t border-white/5 pt-20' : ''
+                    idx > 0 ? 'border-t border-white/10 pt-20' : ''
                   }`}
                 >
                   {/* Column 1: Image & Variety Label */}
@@ -177,7 +93,7 @@ export default function Products() {
                     </div>
                     
                     {/* Variety Tag */}
-                    <div className="p-4 bg-[#181B22] border border-white/5 rounded-lg flex items-center justify-between shadow-premium">
+                    <div className="p-4 bg-[#181B22] border border-white/10 rounded-lg flex items-center justify-between shadow-premium">
                       <div>
                         <span className="text-[9px] uppercase font-bold tracking-widest text-gray-400 block">Variety Types</span>
                         <span className="font-display font-bold text-sm text-accent">{product.variety}</span>
@@ -198,7 +114,7 @@ export default function Products() {
                       {product.name}
                     </h2>
                     <div className="h-[2px] w-14 bg-accent rounded" />
-                    <p className="text-gray-300 text-sm leading-relaxed font-light">
+                    <p className="text-gray-400 text-sm leading-relaxed font-light">
                       {product.description}
                     </p>
 
@@ -228,15 +144,15 @@ export default function Products() {
                           <FileSpreadsheet size={16} className="text-accent mr-2" />
                           <span>Technical Specifications</span>
                         </h4>
-                        <div className="border border-white/5 rounded-lg overflow-hidden shadow-premium">
+                        <div className="border border-white/10 rounded-lg overflow-hidden shadow-premium">
                           <table className="min-w-full divide-y divide-white/5 text-xs">
                             <tbody className="bg-[#181B22]/50 divide-y divide-white/5">
                               {product.specifications.map((spec) => (
                                 <tr key={spec.name} className="hover:bg-white/5 transition-colors">
-                                  <td className="px-4 py-2 font-semibold text-accent bg-[#181B22] w-1/3 border-r border-white/5 font-sans">
+                                  <td className="px-4 py-2 font-semibold text-accent bg-[#181B22] w-1/3 border-r border-white/10 font-sans">
                                     {spec.name}
                                   </td>
-                                  <td className="px-4 py-2 text-gray-300 font-light">
+                                  <td className="px-4 py-2 text-gray-400 font-light">
                                     {spec.value}
                                   </td>
                                 </tr>
@@ -248,7 +164,7 @@ export default function Products() {
                     </div>
 
                     {/* Inquiry Button */}
-                    <div className="pt-4 border-t border-white/5 mt-6 flex items-center justify-between">
+                    <div className="pt-4 border-t border-white/10 mt-6 flex items-center justify-between">
                       <Link
                         to="/contact"
                         state={{ defaultProduct: product.name }}
@@ -268,14 +184,14 @@ export default function Products() {
       </section>
 
       {/* Quality Commitment Section */}
-      <section className="bg-[#181B22] py-24 border-t border-white/5 relative overflow-hidden">
+      <section className="bg-[#181B22] py-24 border-t border-white/10 relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:24px_24px]" />
         <div className="absolute -top-40 -left-40 w-96 h-96 bg-accent/5 rounded-full blur-[120px]" />
         
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center space-y-6">
-          <h3 className="font-display font-extrabold text-3xl text-white">Need Customized Packing Specifications?</h3>
+          <h3 className="font-display font-extrabold text-3xl text-white">Need Customized Bulk Shipments?</h3>
           <p className="text-gray-400 text-xs sm:text-sm font-light leading-relaxed max-w-xl mx-auto">
-            We support multiple packaging designs, loading types, and weight volumes to meet your distribution parameters. Get in touch with our factory operations desk today.
+            We support multiple loading types, transport logistics, and weight volumes to meet your distribution parameters. Get in touch with our factory operations desk today.
           </p>
           <div className="pt-4">
             <Link

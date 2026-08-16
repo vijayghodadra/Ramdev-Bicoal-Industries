@@ -9,7 +9,7 @@ import { getImageUrl, setImageUrl, resetImages } from '../utils/imageHelper';
 import SEO from '../components/SEO';
 import { supabase, isSupabaseConfigured } from '../utils/supabaseClient';
 
-const DEFAULT_PASSCODE = 'SomnathAdmin@2026';
+const DEFAULT_PASSCODE = 'RBI@8070';
 
 export default function Admin() {
   // Authentication states
@@ -549,7 +549,7 @@ export default function Admin() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="bg-[#181B22] border border-white/5 rounded-2xl p-8 sm:p-10 shadow-premium relative overflow-hidden"
+              className="bg-[#181B22] border border-white/10 rounded-2xl p-8 sm:p-10 shadow-premium relative overflow-hidden"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-accent/5 rounded-full blur-3xl pointer-events-none" />
               
@@ -572,7 +572,7 @@ export default function Admin() {
                       value={passcode}
                       onChange={(e) => setPasscode(e.target.value)}
                       placeholder="••••••••••••••"
-                      className="w-full pl-4 pr-10 py-3 bg-[#0F1115] border border-white/5 focus:border-accent text-sm text-white rounded-lg outline-none transition-colors font-mono"
+                      className="w-full pl-4 pr-10 py-3 bg-[#0F1115] border border-white/10 focus:border-accent text-sm text-white rounded-lg outline-none transition-colors font-mono"
                     />
                     <button
                       type="button"
@@ -605,7 +605,7 @@ export default function Admin() {
           <div className="space-y-8">
             
             {/* Header Dashboard Info */}
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 border-b border-white/5 pb-8">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 border-b border-white/10 pb-8">
               <div className="space-y-2">
                 <div className="flex items-center space-x-2.5">
                   <LayoutDashboard className="text-accent" size={24} />
@@ -633,8 +633,7 @@ export default function Admin() {
                 {[
                   { id: 'inquiries', label: 'Inquiry Messages', icon: MessageSquare, count: inquiries.filter(i => i.status === 'unread').length },
                   { id: 'images', label: 'Image Override Manager', icon: LayoutDashboard },
-                  { id: 'gallery', label: 'Media Gallery Photos', icon: ImageIcon },
-                  { id: 'content', label: 'Daily Updates & Quotes', icon: FileText }
+                  { id: 'gallery', label: 'Media Gallery Photos', icon: ImageIcon }
                 ].map((tab) => (
                   <button
                     key={tab.id}
@@ -642,7 +641,7 @@ export default function Admin() {
                     className={`w-full p-4 rounded-xl text-left text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-between border cursor-pointer ${
                       activeTab === tab.id
                         ? 'bg-accent text-primary border-accent shadow-premium'
-                        : 'bg-[#181B22] text-gray-400 border-white/5 hover:border-accent/40 hover:text-white'
+                        : 'bg-[#181B22] text-gray-400 border-white/10 hover:border-accent/40 hover:text-white'
                     }`}
                   >
                     <div className="flex items-center space-x-3">
@@ -650,7 +649,7 @@ export default function Admin() {
                       <span>{tab.label}</span>
                     </div>
                     {tab.count !== undefined && tab.count > 0 && (
-                      <span className={`px-2 py-0.5 rounded text-[10px] font-black font-sans ${activeTab === tab.id ? 'bg-primary text-accent' : 'bg-accent text-primary'}`}>
+                      <span className={`px-2 py-0.5 rounded text-[10px] font-black font-sans ${activeTab === tab.id ? 'bg-[#0F1115] text-accent' : 'bg-accent text-primary'}`}>
                         {tab.count} New
                       </span>
                     )}
@@ -659,12 +658,12 @@ export default function Admin() {
               </div>
 
               {/* Panel Display Column (9 Cols) */}
-              <div className="lg:col-span-9 bg-[#181B22] border border-white/5 rounded-2xl p-6 sm:p-8 shadow-premium min-h-[500px]">
+              <div className="lg:col-span-9 bg-[#181B22] border border-white/10 rounded-2xl p-6 sm:p-8 shadow-premium min-h-[500px]">
                 
                 {/* 1. INQUIRIES TAB */}
                 {activeTab === 'inquiries' && (
                   <div className="space-y-6">
-                    <div className="border-b border-white/5 pb-4">
+                    <div className="border-b border-white/10 pb-4">
                       <h3 className="font-display font-extrabold text-xl text-white">Client Inquiry Messages</h3>
                       <p className="text-xs text-gray-400 font-light mt-1">Review contact inquiries captured from the website inquiry forms.</p>
                     </div>
@@ -676,11 +675,11 @@ export default function Admin() {
                           className={`p-5 rounded-xl border transition-colors ${
                             inq.status === 'unread' 
                               ? 'bg-[#1e232e] border-accent/20' 
-                              : 'bg-[#181B22] border-white/5'
+                              : 'bg-[#181B22] border-white/10'
                           }`}
                         >
                           {/* Top bar info */}
-                          <div className="flex flex-wrap items-start justify-between gap-4 border-b border-white/5 pb-3 mb-3">
+                          <div className="flex flex-wrap items-start justify-between gap-4 border-b border-white/10 pb-3 mb-3">
                             <div>
                               <div className="flex items-center space-x-2">
                                 <h4 className="font-display font-bold text-white text-base">{inq.name}</h4>
@@ -699,7 +698,7 @@ export default function Admin() {
                           </div>
 
                           {/* Message Content */}
-                          <p className="text-xs text-gray-300 leading-relaxed font-light whitespace-pre-line bg-[#0F1115] p-3 rounded-lg border border-white/5">
+                          <p className="text-xs text-gray-400 leading-relaxed font-light whitespace-pre-line bg-[#0F1115] p-3 rounded-lg border border-white/10">
                             {inq.message}
                           </p>
 
@@ -713,7 +712,7 @@ export default function Admin() {
                             <div className="flex items-center space-x-2">
                               <button
                                 onClick={() => toggleInquiryStatus(inq.id)}
-                                className="p-2 bg-white/5 hover:bg-white/10 rounded-lg text-gray-300 hover:text-white transition-colors cursor-pointer border border-white/5"
+                                className="p-2 bg-white/5 hover:bg-white/10 rounded-lg text-gray-400 hover:text-white transition-colors cursor-pointer border border-white/10"
                                 title={inq.status === 'unread' ? 'Mark as Read' : 'Mark as Unread'}
                               >
                                 {inq.status === 'read' ? <Square size={16} /> : <CheckSquare size={16} />}
@@ -743,7 +742,7 @@ export default function Admin() {
                 {/* 2. IMAGES TAB */}
                 {activeTab === 'images' && (
                   <div className="space-y-6">
-                    <div className="flex items-center justify-between border-b border-white/5 pb-4">
+                    <div className="flex items-center justify-between border-b border-white/10 pb-4">
                       <div>
                         <h3 className="font-display font-extrabold text-xl text-white">Website Image Manager</h3>
                         <p className="text-xs text-gray-400 font-light mt-1">Provide external image URLs to dynamically override the local static assets.</p>
@@ -751,7 +750,7 @@ export default function Admin() {
 
                       <button
                         onClick={handleResetAllImages}
-                        className="px-3 py-1.5 bg-white/5 hover:bg-white/10 border border-white/5 text-gray-300 hover:text-accent font-bold text-[10px] tracking-wider rounded-lg transition-colors flex items-center space-x-1.5 uppercase font-display cursor-pointer"
+                        className="px-3 py-1.5 bg-white/5 hover:bg-white/10 border border-white/10 text-gray-400 hover:text-accent font-bold text-[10px] tracking-wider rounded-lg transition-colors flex items-center space-x-1.5 uppercase font-display cursor-pointer"
                       >
                         <RefreshCw size={11} />
                         <span>Reset All</span>
@@ -773,11 +772,10 @@ export default function Admin() {
                         const resolvedSrc = getImageUrl(imgItem.key);
                         
                         return (
-                          <div key={imgItem.key} className="p-5 bg-[#0F1115] border border-white/5 rounded-xl flex flex-col md:flex-row gap-5 items-start">
+                          <div key={imgItem.key} className="p-5 bg-[#0F1115] border border-white/10 rounded-xl flex flex-col md:flex-row gap-5 items-start">
                             {/* Preview box */}
                             <div className="w-full md:w-32 h-20 rounded-lg overflow-hidden border border-white/10 shrink-0 bg-black/40 relative">
-                              <img 
-                                src={resolvedSrc} 
+                              <img loading="lazy" decoding="async" src={resolvedSrc} 
                                 alt={imgItem.label} 
                                 className="w-full h-full object-cover" 
                               />
@@ -823,153 +821,11 @@ export default function Admin() {
                   </div>
                 )}
 
-                {/* 3. CONTENT (UPDATES & QUOTES) TAB */}
-                {activeTab === 'content' && (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    
-                    {/* Left Column: Manage Daily Updates */}
-                    <div className="space-y-6">
-                      <div className="border-b border-white/5 pb-3">
-                        <h3 className="font-display font-extrabold text-lg text-white">Daily Updates</h3>
-                        <p className="text-[10px] text-gray-400 font-light mt-0.5">Post new announcements or market rates to the updates timeline.</p>
-                      </div>
-
-                      {/* Add Update Form */}
-                      <form onSubmit={handleAddUpdate} className="space-y-4 bg-[#0F1115] p-5 rounded-xl border border-white/5">
-                        <div className="space-y-1">
-                          <label className="block text-[9px] font-bold text-white uppercase tracking-wider">Update Title *</label>
-                          <input
-                            type="text"
-                            required
-                            value={newUpdate.title}
-                            onChange={(e) => setNewUpdate(prev => ({ ...prev, title: e.target.value }))}
-                            placeholder="e.g. Optical Camera Line 2 Calibrated"
-                            className="w-full px-3 py-2 bg-[#181B22] border border-white/5 focus:border-accent text-xs text-white rounded-lg outline-none"
-                          />
-                        </div>
-
-                        <div className="space-y-1">
-                          <label className="block text-[9px] font-bold text-white uppercase tracking-wider">Category Category</label>
-                          <select
-                            value={newUpdate.category}
-                            onChange={(e) => setNewUpdate(prev => ({ ...prev, category: e.target.value }))}
-                            className="w-full px-3 py-2 bg-[#181B22] border border-white/5 focus:border-accent text-xs text-white rounded-lg outline-none cursor-pointer"
-                          >
-                            <option value="Plant Operations">Plant Operations</option>
-                            <option value="Market Rates">Market Rates</option>
-                            <option value="Quality updates">Quality updates</option>
-                            <option value="General">General</option>
-                          </select>
-                        </div>
-
-                        <div className="space-y-1">
-                          <label className="block text-[9px] font-bold text-white uppercase tracking-wider">Update Content *</label>
-                          <textarea
-                            required
-                            rows="3"
-                            value={newUpdate.content}
-                            onChange={(e) => setNewUpdate(prev => ({ ...prev, content: e.target.value }))}
-                            placeholder="Describe details..."
-                            className="w-full px-3 py-2 bg-[#181B22] border border-white/5 focus:border-accent text-xs text-white rounded-lg outline-none resize-none"
-                          />
-                        </div>
-
-                        <button
-                          type="submit"
-                          className="w-full py-2 bg-accent hover:bg-accent-hover text-primary font-bold text-xs uppercase tracking-wider font-display rounded-lg transition-colors flex items-center justify-center space-x-1.5 cursor-pointer"
-                        >
-                          <Plus size={13} />
-                          <span>Publish Announcement</span>
-                        </button>
-                      </form>
-
-                      {/* Updates List */}
-                      <div className="space-y-3 max-h-[300px] overflow-y-auto pr-2 no-scrollbar">
-                        {updates.map((up) => (
-                          <div key={up.id} className="p-4 bg-[#0F1115]/60 border border-white/5 rounded-lg flex items-start justify-between gap-3">
-                            <div className="space-y-1">
-                              <span className="text-[8px] font-black text-accent uppercase tracking-widest">{up.category}</span>
-                              <h5 className="font-display font-bold text-white text-xs leading-snug">{up.title}</h5>
-                              <p className="text-[9px] text-gray-400 font-light line-clamp-2">{up.content}</p>
-                            </div>
-                            <button
-                              onClick={() => handleDeleteUpdate(up.id)}
-                              className="p-1.5 bg-red-950/20 hover:bg-red-500/20 text-red-400 hover:text-red-300 rounded border border-red-500/10 cursor-pointer shrink-0"
-                            >
-                              <Trash2 size={12} />
-                            </button>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Right Column: Manage Motivational Quotes */}
-                    <div className="space-y-6 border-t md:border-t-0 md:border-l border-white/5 pt-6 md:pt-0 md:pl-8">
-                      <div className="border-b border-white/5 pb-3">
-                        <h3 className="font-display font-extrabold text-lg text-white">Motivational Quotes</h3>
-                        <p className="text-[10px] text-gray-400 font-light mt-0.5">Add motivational statements to display in the side slider.</p>
-                      </div>
-
-                      {/* Add Quote Form */}
-                      <form onSubmit={handleAddQuote} className="space-y-4 bg-[#0F1115] p-5 rounded-xl border border-white/5">
-                        <div className="space-y-1">
-                          <label className="block text-[9px] font-bold text-white uppercase tracking-wider">Quote Text *</label>
-                          <textarea
-                            required
-                            rows="2"
-                            value={newQuote.text}
-                            onChange={(e) => setNewQuote(prev => ({ ...prev, text: e.target.value }))}
-                            placeholder="e.g. Trust is built seed by seed..."
-                            className="w-full px-3 py-2 bg-[#181B22] border border-white/5 focus:border-accent text-xs text-white rounded-lg outline-none resize-none font-light italic"
-                          />
-                        </div>
-
-                        <div className="space-y-1">
-                          <label className="block text-[9px] font-bold text-white uppercase tracking-wider">Author / Source</label>
-                          <input
-                            type="text"
-                            value={newQuote.author}
-                            onChange={(e) => setNewQuote(prev => ({ ...prev, author: e.target.value }))}
-                            placeholder="e.g. Operations Manager (or leave blank)"
-                            className="w-full px-3 py-2 bg-[#181B22] border border-white/5 focus:border-accent text-xs text-white rounded-lg outline-none"
-                          />
-                        </div>
-
-                        <button
-                          type="submit"
-                          className="w-full py-2 bg-accent hover:bg-accent-hover text-primary font-bold text-xs uppercase tracking-wider font-display rounded-lg transition-colors flex items-center justify-center space-x-1.5 cursor-pointer"
-                        >
-                          <Plus size={13} />
-                          <span>Publish Quote</span>
-                        </button>
-                      </form>
-
-                      {/* Quotes List */}
-                      <div className="space-y-3 max-h-[300px] overflow-y-auto pr-2 no-scrollbar">
-                        {quotes.map((q) => (
-                          <div key={q.id} className="p-4 bg-[#0F1115]/60 border border-white/5 rounded-lg flex items-start justify-between gap-3">
-                            <div className="space-y-1">
-                              <p className="text-xs text-gray-300 font-light italic leading-relaxed">"{q.text}"</p>
-                              <span className="text-[8px] font-bold text-accent uppercase tracking-widest block mt-1">— {q.author}</span>
-                            </div>
-                            <button
-                              onClick={() => handleDeleteQuote(q.id)}
-                              className="p-1.5 bg-red-950/20 hover:bg-red-500/20 text-red-400 hover:text-red-300 rounded border border-red-500/10 cursor-pointer shrink-0"
-                            >
-                              <Trash2 size={12} />
-                            </button>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                  </div>
-                )}
 
                 {/* 4. GALLERY PHOTOS TAB */}
                 {activeTab === 'gallery' && (
                   <div className="space-y-6">
-                    <div className="border-b border-white/5 pb-4">
+                    <div className="border-b border-white/10 pb-4">
                       <h3 className="font-display font-extrabold text-xl text-white">Media Gallery Photo Manager</h3>
                       <p className="text-xs text-gray-400 font-light mt-1">Upload, categorize, and organize photos in the website's public gallery.</p>
                     </div>
@@ -977,7 +833,7 @@ export default function Admin() {
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                       
                       {/* Left: Add Photo Form (5 cols) */}
-                      <div className="lg:col-span-5 bg-[#0F1115] p-5 rounded-xl border border-white/5 space-y-4">
+                      <div className="lg:col-span-5 bg-[#0F1115] p-5 rounded-xl border border-white/10 space-y-4">
                         <h4 className="font-display font-bold text-sm text-white">Add Photo to Gallery</h4>
                         
                         <form onSubmit={handleAddPhoto} className="space-y-4">
@@ -989,7 +845,7 @@ export default function Admin() {
                               value={newPhoto.title}
                               onChange={(e) => setNewPhoto(prev => ({ ...prev, title: e.target.value }))}
                               placeholder="e.g. Grain Sorting Machine Line"
-                              className="w-full px-3 py-2 bg-[#181B22] border border-white/5 focus:border-accent text-xs text-white rounded-lg outline-none"
+                              className="w-full px-3 py-2 bg-[#181B22] border border-white/10 focus:border-accent text-xs text-white rounded-lg outline-none"
                             />
                           </div>
 
@@ -998,7 +854,7 @@ export default function Admin() {
                             <select
                               value={newPhoto.category}
                               onChange={(e) => setNewPhoto(prev => ({ ...prev, category: e.target.value }))}
-                              className="w-full px-3 py-2 bg-[#181B22] border border-white/5 focus:border-accent text-xs text-white rounded-lg outline-none cursor-pointer"
+                              className="w-full px-3 py-2 bg-[#181B22] border border-white/10 focus:border-accent text-xs text-white rounded-lg outline-none cursor-pointer"
                             >
                               <option value="factory">Factory</option>
                               <option value="machinery">Machinery</option>
@@ -1023,15 +879,15 @@ export default function Admin() {
                                 <div className="flex justify-center text-gray-400">
                                   <ImageIcon size={20} className="stroke-[1.5]" />
                                 </div>
-                                <div className="text-xs text-gray-300">
+                                <div className="text-xs text-gray-400">
                                   {newPhoto.image ? '✓ Image Loaded' : 'Click to select photo file'}
                                 </div>
                                 <p className="text-[9px] text-gray-500">Supports PNG, JPG, JPEG</p>
                               </div>
                             </div>
                             {newPhoto.image && (
-                              <div className="mt-2 w-full h-24 rounded-lg overflow-hidden border border-white/5 bg-black/40 relative">
-                                <img src={newPhoto.image} alt="Upload preview" className="w-full h-full object-cover" />
+                              <div className="mt-2 w-full h-24 rounded-lg overflow-hidden border border-white/10 bg-black/40 relative">
+                                <img loading="lazy" decoding="async" src={newPhoto.image} alt="Upload preview" className="w-full h-full object-cover" />
                               </div>
                             )}
                           </div>
@@ -1052,10 +908,10 @@ export default function Admin() {
                         
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-h-[500px] overflow-y-auto pr-2 no-scrollbar">
                           {galleryItems.map((photo, idx) => (
-                            <div key={idx} className="p-3 bg-[#0F1115]/50 border border-white/5 rounded-xl flex items-center gap-3 relative group hover:border-white/10 transition-colors">
+                            <div key={idx} className="p-3 bg-[#0F1115]/50 border border-white/10 rounded-xl flex items-center gap-3 relative group hover:border-white/10 transition-colors">
                               {/* Preview thumbnail */}
                               <div className="w-14 h-14 rounded-lg overflow-hidden border border-white/10 bg-black/40 shrink-0">
-                                <img src={photo.image} alt={photo.title} className="w-full h-full object-cover" />
+                                <img loading="lazy" decoding="async" src={photo.image} alt={photo.title} className="w-full h-full object-cover" />
                               </div>
 
                               {/* Info details */}

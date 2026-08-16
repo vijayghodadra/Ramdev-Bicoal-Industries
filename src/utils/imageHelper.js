@@ -1,10 +1,10 @@
-import peanutDefault from '../assets/Peanut.jpg';
-import chanaDefault from '../assets/Chana.jpg';
-import tuwarDefault from '../assets/Tuwar.jpg';
-import wheatDefault from '../assets/Wheat.png';
-import cardsDefault from '../assets/Card.jpeg';
-import machineMayorDefault from '../assets/Machinemayor.jpeg';
-import kabuliDefault from '../assets/Kabuli.png';
+import peanutDefault from '../assets/B6.jpg';
+import chanaDefault from '../assets/R1.jpg';
+import tuwarDefault from '../assets/B8.jpg';
+import wheatDefault from '../assets/B10.jpg';
+import cardsDefault from '../assets/j1.jpg';
+import machineMayorDefault from '../assets/M4.jpg';
+import kabuliDefault from '../assets/B3.jpg';
 
 const DEFAULT_IMAGES = {
   home_hero_bg: 'https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?q=80&w=2000&auto=format&fit=crop',

@@ -3,6 +3,10 @@ import { NavLink, Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Cog, PhoneCall, ChevronDown, ArrowRight } from 'lucide-react';
 import { getImageUrl } from '../utils/imageHelper';
+import logoImg from '../assets/logo.png';
+import briquetteImg from '../assets/RAW.jpg';
+import ecoImg from '../assets/B2.jpg';
+import perfImg from '../assets/B4.jpg';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -35,50 +39,35 @@ export default function Navbar() {
 
   const navLinks = [
     { name: 'Home', path: '/' },
-    { name: 'Services', path: '/services' },
     { name: 'Products', path: '/products', isMega: true },
+    { name: 'Process', path: '/process' },
     { name: 'About Us', path: '/about' },
     { name: 'Media Gallery', path: '/gallery' },
-    { name: 'Daily Updates', path: '/updates' },
     { name: 'Contact Us', path: '/contact' },
     { name: isAdmin ? 'Admin Panel' : 'Admin Login', path: '/admin' },
   ];
 
   const megaProducts = [
     {
-      id: 'peanut',
-      name: 'Peanuts(સીંગદાણા)',
-      variety: 'Bold, Java & TJ Varieties',
-      desc: 'Double-sorted, high-purity kernels classified by precise ounce counts.',
-      image: getImageUrl('peanut'),
+      id: 'briquettes',
+      name: '90mm Groundnut Briquettes',
+      variety: '100% Pure Groundnut Husk',
+      desc: 'High-density biomass briquettes manufactured exclusively for industrial boilers.',
+      image: briquetteImg,
     },
     {
-      id: 'chana',
-      name: 'Chickpeas(ચણા)',
-      variety: 'Bengal Gram & Desi',
-      desc: 'Uniform diameter separation, calibrated for optimal wholesale output.',
-      image: getImageUrl('chana'),
+      id: 'eco-fuel',
+      name: 'Eco-Friendly Fuel',
+      variety: 'Zero Fossil Fuels',
+      desc: 'A clean, renewable energy source that drastically reduces carbon footprint.',
+      image: ecoImg,
     },
     {
-      id: 'tuwar',
-      name: 'Pigeon Peas(તુવેર)',
-      variety: 'Red & White Whole Seeds',
-      desc: 'Destoned and aspirated whole peas prepared for premium dehulling mills.',
-      image: getImageUrl('tuwar'),
-    },
-    {
-      id: 'wheat',
-      name: 'Wheat(ઘઉં)',
-      variety: 'Lokwan & Tukda Varieties',
-      desc: 'Premium cleaned whole wheat grains sorted for mills and exporters.',
-      image: getImageUrl('wheat'),
-    },
-    {
-      id: 'kabuli',
-      name: 'Garbanzo beans(કાબુલી ચણા)',
-      variety: 'Dollar & Kabuli Varieties',
-      desc: 'Large size sorted white garbanzo beans (Kabuli) with high optical purity.',
-      image: getImageUrl('kabuli'),
+      id: 'performance',
+      name: 'High GCV Performance',
+      variety: '~4000 kcal/kg Calorific Value',
+      desc: 'Provides sustained thermal output preventing furnace clogging and ash waste.',
+      image: perfImg,
     }
   ];
 
@@ -101,16 +90,16 @@ export default function Navbar() {
           <div className="flex items-center justify-between">
             <Link to="/" className="flex items-center space-x-2 group">
               <motion.div 
-                whileHover={{ rotate: 180 }}
-                transition={{ duration: 0.8, ease: 'easeOut' }}
-                className="text-accent"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.2 }}
+                className="flex items-center justify-center mr-2"
               >
-                <Cog size={30} className="stroke-[1.5] animate-spin-slow" />
+                <img src={logoImg} alt="Ramdev Logo" className="w-20 h-20 object-contain" />
               </motion.div>
               <span className="font-display text-xl sm:text-2xl font-extrabold tracking-wider text-white">
-                SOMNATH
-                <span className="text-accent ml-1 font-semibold text-[10px] tracking-[0.2em] block uppercase -mt-1.5 font-sans">
-                  INDUSTRIES
+                RAMDEV
+                <span className="text-accent font-extrabold text-xs tracking-[0.2em] block uppercase -mt-1 font-sans">
+                  BIOCOAL INDUSTRIES
                 </span>
               </span>
             </Link>
@@ -126,7 +115,7 @@ export default function Navbar() {
                       onMouseLeave={handleMouseLeave}
                     >
                       <button
-                        className="flex items-center space-x-1 font-semibold text-sm text-gray-300 hover:text-accent transition-all duration-300 cursor-pointer"
+                        className="flex items-center space-x-1 font-semibold text-sm text-gray-400 hover:text-accent transition-all duration-300 cursor-pointer"
                       >
                         <span>{link.name}</span>
                         <ChevronDown size={14} className={`transform transition-transform duration-300 ${isMegaOpen ? 'rotate-180' : ''}`} />
@@ -150,9 +139,8 @@ export default function Navbar() {
                                   className="group/item flex flex-col space-y-2.5 p-3 rounded-lg hover:bg-white/5 transition-all duration-300"
                                   onClick={() => setIsMegaOpen(false)}
                                 >
-                                  <div className="h-24 w-full rounded-md overflow-hidden relative border border-white/5">
-                                    <img 
-                                      src={prod.image} 
+                                  <div className="h-24 w-full rounded-md overflow-hidden relative border border-white/10">
+                                    <img loading="lazy" decoding="async" src={prod.image} 
                                       alt={prod.name} 
                                       className="w-full h-full object-cover group-hover/item:scale-105 transition-transform duration-500" 
                                     />
@@ -171,12 +159,12 @@ export default function Navbar() {
                               ))}
                             </div>
 
-                            <div className="col-span-4 bg-white/5 rounded-lg p-4 border border-white/5 flex flex-col justify-between">
+                            <div className="col-span-4 bg-white/5 rounded-lg p-4 border border-white/10 flex flex-col justify-between">
                               <div className="space-y-3">
-                                <span className="text-[9px] font-bold text-accent tracking-widest uppercase block">Custom Sizing</span>
-                                <h5 className="font-display font-extrabold text-sm text-white">Need Customized Grading Specifications?</h5>
-                                <p className="text-[10px] text-gray-300 leading-normal">
-                                  We support custom loading volumes and sieve parameters for global exporters.
+                                <span className="text-[9px] font-bold text-accent tracking-widest uppercase block">Industrial Supply</span>
+                                <h5 className="font-display font-extrabold text-sm text-white">Need Bulk Order Specifications?</h5>
+                                <p className="text-[10px] text-gray-400 leading-normal">
+                                  We support custom tonnage logistics and dedicated transport solutions for industrial plants.
                                 </p>
                               </div>
                               <Link
@@ -203,7 +191,7 @@ export default function Navbar() {
                       `font-semibold text-sm transition-all duration-300 py-1 border-b-2 ${
                         isActive 
                           ? 'text-accent border-accent' 
-                          : 'text-gray-300 hover:text-accent border-transparent'
+                          : 'text-gray-400 hover:text-accent border-transparent'
                       }`
                     }
                   >
@@ -216,7 +204,7 @@ export default function Navbar() {
             <div className="hidden lg:flex items-center space-x-4">
               <Link
                 to="/contact"
-                className="px-6 py-3 rounded-lg text-xs font-bold uppercase tracking-wider bg-accent hover:bg-accent-hover text-primary transition-all duration-300 shadow-premium font-display hover:scale-[1.03]"
+                className="px-6 py-3 rounded-lg text-xs font-bold uppercase tracking-wider bg-accent hover:bg-accent-hover text-[#0F1115] transition-all duration-300 shadow-premium font-display hover:scale-[1.03]"
               >
                 Request Quote
               </Link>
@@ -251,16 +239,16 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 220 }}
-              className="fixed inset-y-0 right-0 z-50 w-4/5 max-w-sm bg-[#181B22] shadow-2xl flex flex-col justify-between border-l border-white/5"
+              className="fixed inset-y-0 right-0 z-50 w-4/5 max-w-sm bg-[#181B22] shadow-2xl flex flex-col justify-between border-l border-white/10"
             >
               <div className="px-6 py-6 overflow-y-auto">
-                <div className="flex items-center justify-between border-b border-white/5 pb-5">
+                <div className="flex items-center justify-between border-b border-white/10 pb-5">
                   <div className="flex items-center space-x-2">
                     <Cog className="text-accent animate-spin-slow" size={24} />
                     <span className="font-display font-extrabold text-lg text-white tracking-wide">
-                      SOMNATH
-                      <span className="text-accent block text-[9px] tracking-widest font-semibold uppercase -mt-1 font-sans">
-                        INDUSTRIES
+                      RAMDEV
+                      <span className="text-accent ml-1 font-semibold text-[9px] tracking-[0.2em] block uppercase -mt-1 font-sans">
+                        BIOCOAL INDUSTRIES
                       </span>
                     </span>
                   </div>
@@ -287,7 +275,7 @@ export default function Navbar() {
                           `block py-3 px-4 rounded-lg font-semibold text-base transition-all ${
                             isActive
                               ? 'bg-accent/10 text-accent font-bold'
-                              : 'text-gray-300 hover:bg-white/5'
+                              : 'text-gray-400 hover:bg-white/5'
                           }`
                         }
                       >
@@ -298,7 +286,7 @@ export default function Navbar() {
                 </div>
               </div>
 
-              <div className="p-6 border-t border-white/5 bg-[#0F1115] space-y-4">
+              <div className="p-6 border-t border-white/10 bg-[#0F1115] space-y-4">
                 <Link
                   to="/contact"
                   onClick={() => setIsOpen(false)}

@@ -12,13 +12,12 @@ import FloatingActions from './components/FloatingActions';
 // Lazy loaded Pages
 const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/About'));
-const Services = lazy(() => import('./pages/Services'));
 const Products = lazy(() => import('./pages/Products'));
+const Process = lazy(() => import('./pages/Process'));
 const Gallery = lazy(() => import('./pages/Gallery'));
 const Contact = lazy(() => import('./pages/Contact'));
-const DigitalCard = lazy(() => import('./pages/DigitalCard'));
+
 const Admin = lazy(() => import('./pages/Admin'));
-const Updates = lazy(() => import('./pages/Updates'));
 
 // Scroll to Top on Route Change
 function ScrollToTop() {
@@ -78,14 +77,12 @@ export default function App() {
                 <Routes location={location}>
                   <Route path="/" element={<Home />} />
                   <Route path="/about" element={<About />} />
-                  <Route path="/services" element={<Services />} />
                   <Route path="/products" element={<Products />} />
+                  <Route path="/process" element={<Process />} />
                   <Route path="/gallery" element={<Gallery />} />
                   <Route path="/contact" element={<Contact />} />
-                  <Route path="/card" element={<DigitalCard />} />
-                  <Route path="/digital-card" element={<DigitalCard />} />
+
                   <Route path="/admin" element={<Admin />} />
-                  <Route path="/updates" element={<Updates />} />
                   <Route path="*" element={<Home />} />
                 </Routes>
               </Suspense>

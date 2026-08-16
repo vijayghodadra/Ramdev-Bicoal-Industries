@@ -6,7 +6,7 @@ import {
   CheckCircle, AlertCircle, QrCode 
 } from 'lucide-react';
 import SEO from '../components/SEO';
-import qrImage from '../assets/qr.png';
+import qrImage from '../assets/B3.jpg';
 import { supabase, isSupabaseConfigured } from '../utils/supabaseClient';
 
 export default function Contact() {
@@ -41,12 +41,12 @@ export default function Contact() {
         setFormData(prev => ({
           ...prev,
           product: selectedKey,
-          message: `Hello Somnath Industries. I would like to request pricing and catalog specifications for ${location.state.defaultProduct}.`
+          message: `Hello Ramdev Biocoal Industries. I would like to request pricing and catalog specifications for ${location.state.defaultProduct}.`
         }));
       } else if (location.state.openQuoteModal) {
         setFormData(prev => ({
           ...prev,
-          message: `Hello Somnath Industries. I would like to request a customized quote for agricultural processing.`
+          message: `Hello Ramdev Biocoal Industries. I would like to request a customized quote for agricultural processing.`
         }));
       }
     }
@@ -159,11 +159,11 @@ export default function Contact() {
     <div className="relative bg-[#0F1115] text-white">
       <SEO 
         title="Contact Us" 
-        description="Get in touch with Somnath Industries. Fill out our quote form or connect directly via Call/WhatsApp. View our factory location map in Sondarda."
+        description="Get in touch with Ramdev Biocoal Industries. Fill out our quote form or connect directly via Call/WhatsApp. View our factory location map in Sondarda."
       />
 
       {/* Page Header Banner */}
-      <section className="relative pt-36 pb-20 overflow-hidden border-b border-white/5">
+      <section className="relative pt-36 pb-20 overflow-hidden border-b border-white/10">
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-15"
           style={{ backgroundImage: `url('https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?q=80&w=1200&auto=format&fit=crop')` }}
@@ -200,7 +200,7 @@ export default function Contact() {
                   Get In Touch Directly
                 </h2>
                 <div className="h-[2px] w-16 bg-accent rounded" />
-                <p className="text-gray-300 text-sm font-light">
+                <p className="text-gray-400 text-sm font-light">
                   Use the quick call or messaging links below to connect directly with our operations manager on the floor.
                 </p>
               </div>
@@ -209,7 +209,7 @@ export default function Contact() {
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <a
                   href="tel:+919925842943"
-                  className="px-4 py-3.5 bg-[#181B22] border border-white/5 hover:border-accent text-white hover:text-accent font-bold text-xs tracking-wider rounded-lg shadow-premium transition-all duration-300 flex items-center justify-center space-x-2 font-display uppercase cursor-pointer"
+                  className="px-4 py-3.5 bg-[#181B22] border border-white/10 hover:border-accent text-white hover:text-accent font-bold text-xs tracking-wider rounded-lg shadow-premium transition-all duration-300 flex items-center justify-center space-x-2 font-display uppercase cursor-pointer"
                 >
                   <Phone size={14} className="fill-current" />
                   <span>Call Now</span>
@@ -224,8 +224,8 @@ export default function Contact() {
                   <span>WhatsApp</span>
                 </a>
                 <a
-                  href="mailto:sagar.gondaliya@somnathindustries.info"
-                  className="px-4 py-3.5 bg-[#181B22]/50 border border-white/5 hover:bg-[#181B22] text-white hover:text-accent font-bold text-xs tracking-wider rounded-lg shadow transition-all duration-300 flex items-center justify-center space-x-2 font-display uppercase cursor-pointer"
+                  href="mailto:ramdevbiocoalindustry@gmail.com"
+                  className="px-4 py-3.5 bg-[#181B22]/50 border border-white/10 hover:bg-[#181B22] text-white hover:text-accent font-bold text-xs tracking-wider rounded-lg shadow transition-all duration-300 flex items-center justify-center space-x-2 font-display uppercase cursor-pointer"
                 >
                   <Mail size={14} />
                   <span>Email Us</span>
@@ -233,7 +233,7 @@ export default function Contact() {
               </div>
 
               {/* Text Info List */}
-              <ul className="space-y-6 pt-4 border-t border-white/5">
+              <ul className="space-y-6 pt-4 border-t border-white/10">
                 <li className="flex items-start space-x-4">
                   <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-accent shrink-0 mt-0.5 shadow-premium">
                     <MapPin size={18} />
@@ -253,7 +253,7 @@ export default function Contact() {
                   <div>
                     <h4 className="font-display font-bold text-sm text-white">Operations Hours</h4>
                     <p className="text-xs text-gray-400 mt-1 leading-relaxed font-light">
-                      Monday – Saturday: 8:00 AM – 6:00 PM <br />
+                      Monday – Saturday: 8:00 AM – 8:00 PM <br />
                       Sunday: Plant Maintenance / Closed
                     </p>
                   </div>
@@ -261,9 +261,9 @@ export default function Contact() {
               </ul>
 
               {/* QR Code Placeholder Card */}
-              <div className="p-8 border border-white/5 bg-[#181B22]/50 rounded-2xl flex flex-col sm:flex-row items-center gap-6 shadow-premium">
+              <div className="p-8 border border-white/10 bg-[#181B22]/50 rounded-2xl flex flex-col sm:flex-row items-center gap-6 shadow-premium">
                 <div className="p-3 bg-[#181B22] border border-white/10 rounded-xl flex items-center justify-center relative group cursor-pointer shrink-0">
-                  <img src={qrImage} alt="Somnath Industries Business Card QR Code" className="w-24 h-24 object-contain rounded-lg bg-white p-1" />
+                  <img loading="lazy" decoding="async" src={qrImage} alt="Ramdev Biocoal Industries Business Card QR Code" className="w-24 h-24 object-contain rounded-lg bg-white p-1" />
                   <div className="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl" />
                 </div>
                 <div className="text-center sm:text-left space-y-2">
@@ -276,7 +276,7 @@ export default function Contact() {
             </div>
 
             {/* Right Column: Contact Form */}
-            <div className="lg:col-span-7 bg-[#181B22] border border-white/5 rounded-2xl p-8 sm:p-10 shadow-premium relative overflow-hidden">
+            <div className="lg:col-span-7 bg-[#181B22] border border-white/10 rounded-2xl p-8 sm:p-10 shadow-premium relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-accent/5 rounded-full blur-3xl pointer-events-none" />
               
               <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
@@ -292,9 +292,9 @@ export default function Contact() {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      placeholder="e.g. Sagar Gondaliya"
+                      placeholder="Enter your name"
                       className={`w-full px-4 py-3 rounded-lg border bg-[#0F1115] text-sm text-white outline-none transition-colors ${
-                        errors.name ? 'border-red-500 focus:border-red-500' : 'border-white/5 focus:border-accent'
+                        errors.name ? 'border-red-500 focus:border-red-500' : 'border-white/10 focus:border-accent'
                       }`}
                     />
                     {errors.name && (
@@ -316,9 +316,9 @@ export default function Contact() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      placeholder="e.g. +91 99258 42943"
+                      placeholder="Enter your phone number"
                       className={`w-full px-4 py-3 rounded-lg border bg-[#0F1115] text-sm text-white outline-none transition-colors ${
-                        errors.phone ? 'border-red-500 focus:border-red-500' : 'border-white/5 focus:border-accent'
+                        errors.phone ? 'border-red-500 focus:border-red-500' : 'border-white/10 focus:border-accent'
                       }`}
                     />
                     {errors.phone && (
@@ -342,9 +342,9 @@ export default function Contact() {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      placeholder="e.g. sagar.gondaliya@somnathindustries.info"
+                      placeholder="Enter your email"
                       className={`w-full px-4 py-3 rounded-lg border bg-[#0F1115] text-sm text-white outline-none transition-colors ${
-                        errors.email ? 'border-red-500 focus:border-red-500' : 'border-white/5 focus:border-accent'
+                        errors.email ? 'border-red-500 focus:border-red-500' : 'border-white/10 focus:border-accent'
                       }`}
                     />
                     {errors.email && (
@@ -366,32 +366,10 @@ export default function Contact() {
                       name="business"
                       value={formData.business}
                       onChange={handleChange}
-                      placeholder="e.g. Somnath Industries"
-                      className="w-full px-4 py-3 rounded-lg border border-white/5 bg-[#0F1115] text-sm text-white outline-none focus:border-accent transition-colors"
+                      placeholder="Enter your business name"
+                      className="w-full px-4 py-3 rounded-lg border border-white/10 bg-[#0F1115] text-sm text-white outline-none focus:border-accent transition-colors"
                     />
                   </div>
-                </div>
-
-                {/* Product Dropdown */}
-                <div className="space-y-2">
-                  <label htmlFor="product" className="block text-xs font-bold text-white uppercase tracking-wider">
-                    Inquiry Product Category
-                  </label>
-                  <select
-                    id="product"
-                    name="product"
-                    value={formData.product}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-white/5 bg-[#0F1115] text-sm text-white outline-none focus:border-accent transition-colors cursor-pointer"
-                  >
-                    <option value="general">General Inquiry / Services Quote</option>
-                    <option value="peanut">Peanuts(સીંગદાણા)</option>
-                    <option value="chana">Chickpeas(ચણા)</option>
-                    <option value="tuwar">Pigeon Peas(તુવેર)</option>
-                    <option value="wheat">Wheat(ઘઉં)</option>
-                    <option value="kabuli">Garbanzo beans(કાબુલી ચણા)</option>
-                    <option value="other">Other Agricultural Commodities / Etc.</option>
-                  </select>
                 </div>
 
                 {/* Message */}
@@ -405,9 +383,9 @@ export default function Contact() {
                     rows="5"
                     value={formData.message}
                     onChange={handleChange}
-                    placeholder="Describe your processing request (e.g. Estimated quantity, size grade, required package)..."
+                    placeholder="Enter your message here..."
                     className={`w-full px-4 py-3 rounded-lg border bg-[#0F1115] text-sm text-white outline-none transition-colors resize-y ${
-                      errors.message ? 'border-red-500 focus:border-red-500' : 'border-white/5 focus:border-accent'
+                      errors.message ? 'border-red-500 focus:border-red-500' : 'border-white/10 focus:border-accent'
                     }`}
                   />
                   {errors.message && (
@@ -453,7 +431,7 @@ export default function Contact() {
                       <CheckCircle size={64} className="stroke-[1.5]" />
                     </motion.div>
                     <h3 className="font-display font-extrabold text-2xl text-white">Inquiry Submitted Successfully</h3>
-                    <p className="text-gray-300 text-sm max-w-sm leading-relaxed font-light">
+                    <p className="text-gray-400 text-sm max-w-sm leading-relaxed font-light">
                       Thank you for contacting us. Our operations team will review your requirements and reach out to you within 24 hours.
                     </p>
                     <button
@@ -473,16 +451,16 @@ export default function Contact() {
       </section>
 
       {/* Google Map Section */}
-      <section className="relative h-[450px] w-full border-t border-white/5 bg-[#0F1115]">
+      <section className="relative h-[450px] w-full border-t border-white/10 bg-[#0F1115]">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14849.563032512683!2d70.22851419730594!3d21.311409395276635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3957eb0155555555%3A0xe5469ca30510526e!2sSondarda%2C%20Gujarat%20362227!5e0!3m2!1sen!2sin!4v1719999999999!5m2!1sen!2sin"
+          src="https://maps.google.com/maps?q=21.2576215,70.2598469&t=&z=17&ie=UTF8&iwloc=&output=embed"
           width="100%"
           height="100%"
           style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg) grayscale(100%) contrast(90%)' }}
           allowFullScreen=""
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
-          title="Somnath Industries Location Map"
+          title="Ramdev Biocoal Industries Location Map"
         ></iframe>
       </section>
     </div>
