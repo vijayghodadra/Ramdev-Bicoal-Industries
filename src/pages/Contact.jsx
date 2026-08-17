@@ -208,14 +208,14 @@ export default function Contact() {
               {/* Action Buttons */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <a
-                  href="tel:+919925842943"
+                  href="tel:+919727775987"
                   className="px-4 py-3.5 bg-[#181B22] border border-white/10 hover:border-accent text-white hover:text-accent font-bold text-xs tracking-wider rounded-lg shadow-premium transition-all duration-300 flex items-center justify-center space-x-2 font-display uppercase cursor-pointer"
                 >
                   <Phone size={14} className="fill-current" />
                   <span>Call Now</span>
                 </a>
                 <a
-                  href="https://wa.me/919925842943?text=Hello%20Somnath%20Industries,%20I%20would%20like%20to%20get%20pricing%20details."
+                  href="https://wa.me/919727775987?text=Hello%20Ramdev%20Biocoal%20Industries%2C%0AI%20am%20interested%20in%20your%20biomass%20briquettes.%20I%20found%20your%20product%20on%20your%20website%20and%20would%20like%20to%20get%20more%20details%20regarding%20price%2C%20specifications%2C%20minimum%20order%20quantity%2C%20and%20delivery.%0AThank%20you."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-4 py-3.5 bg-[#25D366] hover:bg-[#128C7E] text-white font-bold text-xs tracking-wider rounded-lg shadow transition-all duration-300 flex items-center justify-center space-x-2 font-display uppercase cursor-pointer"

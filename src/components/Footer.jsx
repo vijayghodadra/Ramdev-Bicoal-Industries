@@ -32,7 +32,7 @@ export default function Footer() {
             {/* Social Icons */}
             <div className="flex space-x-4">
               <a
-                href="https://wa.me/919727775987"
+                href="https://wa.me/919727775987?text=Hello%20Ramdev%20Biocoal%20Industries%2C%0AI%20am%20interested%20in%20your%20biomass%20briquettes.%20I%20found%20your%20product%20on%20your%20website%20and%20would%20like%20to%20get%20more%20details%20regarding%20price%2C%20specifications%2C%20minimum%20order%20quantity%2C%20and%20delivery.%0AThank%20you."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-lg bg-[#181B22] flex items-center justify-center text-gray-400 hover:bg-accent hover:text-primary transition-all duration-300 shadow-sm border border-white/10"
