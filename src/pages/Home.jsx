@@ -284,23 +284,7 @@ export default function Home() {
                   </motion.div>
                 </AnimatePresence>
 
-                {/* Left & Right Chevron Controls */}
-                <button
-                  type="button"
-                  onClick={handlePrevSlide}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 z-30 w-9 h-9 rounded-full bg-black/60 hover:bg-accent hover:text-primary text-white border border-white/10 flex items-center justify-center transition-all duration-300 backdrop-blur-md opacity-80 sm:opacity-0 group-hover:opacity-100 cursor-pointer"
-                  aria-label="Previous slide"
-                >
-                  <ChevronLeft size={18} />
-                </button>
-                <button
-                  type="button"
-                  onClick={handleNextSlide}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 z-30 w-9 h-9 rounded-full bg-black/60 hover:bg-accent hover:text-primary text-white border border-white/10 flex items-center justify-center transition-all duration-300 backdrop-blur-md opacity-80 sm:opacity-0 group-hover:opacity-100 cursor-pointer"
-                  aria-label="Next slide"
-                >
-                  <ChevronRight size={18} />
-                </button>
+
               </div>
             </div>
 

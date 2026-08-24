@@ -32,11 +32,11 @@ export default function Contact() {
       if (location.state.defaultProduct) {
         const prod = location.state.defaultProduct.toLowerCase();
         let selectedKey = 'general';
-        if (prod.includes('peanut')) selectedKey = 'peanut';
+        if (prod.includes('peanut') || prod.includes('briquettes') || prod.includes('biomass')) selectedKey = 'peanut';
         else if (prod.includes('chana') || prod.includes('chickpea')) selectedKey = 'chana';
         else if (prod.includes('tuwar') || prod.includes('pigeon')) selectedKey = 'tuwar';
-        else if (prod.includes('wheat')) selectedKey = 'wheat';
-        else if (prod.includes('kabuli') || prod.includes('garbanzo')) selectedKey = 'kabuli';
+        else if (prod.includes('wheat') || prod.includes('coal') || prod.includes('bio-coal')) selectedKey = 'wheat';
+        else if (prod.includes('kabuli') || prod.includes('boiler') || prod.includes('fuel')) selectedKey = 'kabuli';
 
         setFormData(prev => ({
           ...prev,

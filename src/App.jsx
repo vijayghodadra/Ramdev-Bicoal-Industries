@@ -18,6 +18,7 @@ const Gallery = lazy(() => import('./pages/Gallery'));
 const Contact = lazy(() => import('./pages/Contact'));
 
 const Admin = lazy(() => import('./pages/Admin'));
+const BusinessCard = lazy(() => import('./pages/BusinessCard'));
 
 // Scroll to Top on Route Change
 function ScrollToTop() {
@@ -46,7 +47,7 @@ export default function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  const isCardPage = location.pathname === '/card' || location.pathname === '/digital-card';
+  const isCardPage = location.pathname === '/card' || location.pathname === '/digital-card' || location.pathname === '/business-card';
 
   return (
     <>
@@ -83,6 +84,9 @@ export default function App() {
                   <Route path="/contact" element={<Contact />} />
 
                   <Route path="/admin" element={<Admin />} />
+                  <Route path="/business-card" element={<BusinessCard />} />
+                  <Route path="/digital-card" element={<BusinessCard />} />
+                  <Route path="/card" element={<BusinessCard />} />
                   <Route path="*" element={<Home />} />
                 </Routes>
               </Suspense>

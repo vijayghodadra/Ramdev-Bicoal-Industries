@@ -18,10 +18,10 @@ git config user.email "vijayghodadra@users.noreply.github.com"
 git remote | findstr /R "^origin$" >nul
 if errorlevel 1 (
     echo Adding remote origin...
-    git remote add origin https://github.com/vijayghodadra/SOMNATH-INDUSTRIES.git
+    git remote add origin https://github.com/vijayghodadra/Ramdev-Bicoal-Industries.git
 ) else (
     echo Remote origin already exists. Updating URL...
-    git remote set-url origin https://github.com/vijayghodadra/SOMNATH-INDUSTRIES.git
+    git remote set-url origin https://github.com/vijayghodadra/Ramdev-Bicoal-Industries.git
 )
 
 :: Stage all files
