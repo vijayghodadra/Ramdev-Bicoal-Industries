@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Cog, PhoneCall, ChevronDown, ArrowRight } from 'lucide-react';
@@ -35,7 +35,7 @@ export default function Navbar() {
     setIsMegaOpen(false);
   }, [location]);
 
-  const isAdmin = sessionStorage.getItem('somnath_admin_logged_in') === 'true';
+  const isAdmin = sessionStorage.getItem('ramdev_admin_logged_in') === 'true';
 
   const navLinks = [
     { name: 'Home', path: '/' },
@@ -309,3 +309,4 @@ export default function Navbar() {
     </>
   );
 }
+

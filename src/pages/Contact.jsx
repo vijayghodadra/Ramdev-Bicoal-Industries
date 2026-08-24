@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
@@ -111,7 +111,7 @@ export default function Contact() {
     if (isSupabaseConfigured) {
       try {
         const { error } = await supabase
-          .from('somnath_inquiries')
+          .from('ramdev_inquiries')
           .insert([newInq]);
 
         if (error) throw error;
@@ -146,10 +146,10 @@ export default function Contact() {
 
   const saveInquiryToLocalStorage = (newInq) => {
     try {
-      const stored = localStorage.getItem('somnath_inquiries');
+      const stored = localStorage.getItem('ramdev_inquiries');
       const existing = stored ? JSON.parse(stored) : [];
       newInq.id = `inq-${Date.now()}`;
-      localStorage.setItem('somnath_inquiries', JSON.stringify([newInq, ...existing]));
+      localStorage.setItem('ramdev_inquiries', JSON.stringify([newInq, ...existing]));
     } catch (err) {
       console.error('Error writing inquiry to localStorage:', err);
     }
@@ -253,7 +253,7 @@ export default function Contact() {
                   <div>
                     <h4 className="font-display font-bold text-sm text-white">Operations Hours</h4>
                     <p className="text-xs text-gray-400 mt-1 leading-relaxed font-light">
-                      Monday – Saturday: 8:00 AM – 8:00 PM <br />
+                      Monday â€“ Saturday: 8:00 AM â€“ 8:00 PM <br />
                       Sunday: Plant Maintenance / Closed
                     </p>
                   </div>
@@ -466,3 +466,4 @@ export default function Contact() {
     </div>
   );
 }
+

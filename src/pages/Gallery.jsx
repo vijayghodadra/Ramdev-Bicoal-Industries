@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
 import SEO from '../components/SEO';
@@ -47,7 +47,7 @@ export default function Gallery() {
       if (isSupabaseConfigured) {
         try {
           const { data, error } = await supabase
-            .from('somnath_gallery')
+            .from('ramdev_gallery')
             .select('*')
             .order('created_at', { ascending: false });
 
@@ -57,7 +57,7 @@ export default function Gallery() {
             setGalleryItems(data);
           } else {
             // Check if seeded before in database
-            const isSeeded = localStorage.getItem('somnath_gallery_seeded') === 'true';
+            const isSeeded = localStorage.getItem('ramdev_gallery_seeded') === 'true';
             if (!isSeeded) {
               const seedData = DEFAULT_GALLERY.map(item => ({
                 title: item.title,
@@ -66,12 +66,12 @@ export default function Gallery() {
                 created_at: new Date().toISOString()
               }));
               const { data: insertedData, error: seedError } = await supabase
-                .from('somnath_gallery')
+                .from('ramdev_gallery')
                 .insert(seedData)
                 .select();
               
               if (!seedError) {
-                localStorage.setItem('somnath_gallery_seeded', 'true');
+                localStorage.setItem('ramdev_gallery_seeded', 'true');
                 setGalleryItems(insertedData || []);
               } else {
                 console.error('Error seeding gallery to Supabase:', seedError);
@@ -91,11 +91,11 @@ export default function Gallery() {
     };
 
     const loadFromLocalStorage = () => {
-      const stored = localStorage.getItem('somnath_gallery_items');
+      const stored = localStorage.getItem('ramdev_gallery_items');
       if (stored) {
         setGalleryItems(JSON.parse(stored));
       } else {
-        localStorage.setItem('somnath_gallery_items', JSON.stringify(DEFAULT_GALLERY));
+        localStorage.setItem('ramdev_gallery_items', JSON.stringify(DEFAULT_GALLERY));
         setGalleryItems(DEFAULT_GALLERY);
       }
     };
@@ -325,3 +325,4 @@ export default function Gallery() {
     </div>
   );
 }
+

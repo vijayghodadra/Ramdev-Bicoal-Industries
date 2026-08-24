@@ -1,4 +1,4 @@
-import peanutDefault from '../assets/B6.jpg';
+﻿import peanutDefault from '../assets/B6.jpg';
 import chanaDefault from '../assets/R1.jpg';
 import tuwarDefault from '../assets/B8.jpg';
 import wheatDefault from '../assets/B10.jpg';
@@ -19,7 +19,7 @@ const DEFAULT_IMAGES = {
 
 export const getImageUrl = (key) => {
   try {
-    const saved = localStorage.getItem(`somnath_img_${key}`);
+    const saved = localStorage.getItem(`ramdev_img_${key}`);
     return saved || DEFAULT_IMAGES[key];
   } catch (e) {
     return DEFAULT_IMAGES[key];
@@ -29,9 +29,9 @@ export const getImageUrl = (key) => {
 export const setImageUrl = (key, url) => {
   try {
     if (url && url.trim() !== '') {
-      localStorage.setItem(`somnath_img_${key}`, url.trim());
+      localStorage.setItem(`ramdev_img_${key}`, url.trim());
     } else {
-      localStorage.removeItem(`somnath_img_${key}`);
+      localStorage.removeItem(`ramdev_img_${key}`);
     }
   } catch (e) {
     console.error('Error setting image URL:', e);
@@ -41,9 +41,10 @@ export const setImageUrl = (key, url) => {
 export const resetImages = () => {
   try {
     Object.keys(DEFAULT_IMAGES).forEach(key => {
-      localStorage.removeItem(`somnath_img_${key}`);
+      localStorage.removeItem(`ramdev_img_${key}`);
     });
   } catch (e) {
     console.error('Error resetting images:', e);
   }
 };
+

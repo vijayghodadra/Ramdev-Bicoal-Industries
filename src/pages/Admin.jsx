@@ -1,13 +1,18 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Lock, Eye, EyeOff, LayoutDashboard, MessageSquare, 
   Image as ImageIcon, RefreshCw, Trash2, Plus, 
-  CheckCircle, FileText, XCircle, LogOut, CheckSquare, Square
+  CheckCircle, FileText, XCircle, LogOut, CheckSquare, Square,
+  Receipt, Users, ShoppingCart, Package, FileJson
 } from 'lucide-react';
 import { getImageUrl, setImageUrl, resetImages } from '../utils/imageHelper';
 import SEO from '../components/SEO';
 import { supabase, isSupabaseConfigured } from '../utils/supabaseClient';
+import InvoiceList from './admin/InvoiceList';
+import PartyMaster from './admin/PartyMaster';
+import PurchaseRegister from './admin/PurchaseRegister';
+import StockRegister from './admin/StockRegister';
 
 const DEFAULT_PASSCODE = 'RBI@8070';
 
@@ -48,7 +53,7 @@ export default function Admin() {
     window.scrollTo(0, 0);
     
     // Check session login state
-    const loggedInSession = sessionStorage.getItem('somnath_admin_logged_in');
+    const loggedInSession = sessionStorage.getItem('ramdev_admin_logged_in');
     if (loggedInSession === 'true') {
       setIsLoggedIn(true);
       loadDashboardData();
@@ -60,28 +65,28 @@ export default function Admin() {
       try {
         // Fetch inquiries
         const { data: inqs, error: inqsErr } = await supabase
-          .from('somnath_inquiries')
+          .from('ramdev_inquiries')
           .select('*')
           .order('date', { ascending: false });
         if (!inqsErr) setInquiries(inqs || []);
 
         // Fetch updates
         const { data: ups, error: upsErr } = await supabase
-          .from('somnath_updates')
+          .from('ramdev_updates')
           .select('*')
           .order('date', { ascending: false });
         if (!upsErr) setUpdates(ups || []);
 
         // Fetch quotes
         const { data: qts, error: qtsErr } = await supabase
-          .from('somnath_quotes')
+          .from('ramdev_quotes')
           .select('*')
           .order('id', { ascending: false });
         if (!qtsErr) setQuotes(qts || []);
 
         // Fetch gallery
         const { data: gal, error: galErr } = await supabase
-          .from('somnath_gallery')
+          .from('ramdev_gallery')
           .select('*')
           .order('created_at', { ascending: false });
         if (!galErr) setGalleryItems(gal || []);
@@ -91,23 +96,23 @@ export default function Admin() {
       }
     } else {
       // Inquiries
-      const storedInquiries = localStorage.getItem('somnath_inquiries');
+      const storedInquiries = localStorage.getItem('ramdev_inquiries');
       setInquiries(storedInquiries ? JSON.parse(storedInquiries) : []);
 
       // Updates
-      const storedUpdates = localStorage.getItem('somnath_updates');
+      const storedUpdates = localStorage.getItem('ramdev_updates');
       if (storedUpdates) {
         setUpdates(JSON.parse(storedUpdates));
       }
 
       // Quotes
-      const storedQuotes = localStorage.getItem('somnath_quotes');
+      const storedQuotes = localStorage.getItem('ramdev_quotes');
       if (storedQuotes) {
         setQuotes(JSON.parse(storedQuotes));
       }
 
       // Gallery
-      const storedGallery = localStorage.getItem('somnath_gallery_items');
+      const storedGallery = localStorage.getItem('ramdev_gallery_items');
       if (storedGallery) {
         setGalleryItems(JSON.parse(storedGallery));
       }
@@ -115,19 +120,19 @@ export default function Admin() {
 
     // Load active image manager values
     setImageUrls({
-      home_hero_bg: localStorage.getItem('somnath_img_home_hero_bg') || '',
-      peanut: localStorage.getItem('somnath_img_peanut') || '',
-      wheat: localStorage.getItem('somnath_img_wheat') || '',
-      kabuli: localStorage.getItem('somnath_img_kabuli') || '',
-      cards_img: localStorage.getItem('somnath_img_cards_img') || '',
-      machine_mayor: localStorage.getItem('somnath_img_machine_mayor') || ''
+      home_hero_bg: localStorage.getItem('ramdev_img_home_hero_bg') || '',
+      peanut: localStorage.getItem('ramdev_img_peanut') || '',
+      wheat: localStorage.getItem('ramdev_img_wheat') || '',
+      kabuli: localStorage.getItem('ramdev_img_kabuli') || '',
+      cards_img: localStorage.getItem('ramdev_img_cards_img') || '',
+      machine_mayor: localStorage.getItem('ramdev_img_machine_mayor') || ''
     });
   };
 
   const handleLogin = (e) => {
     e.preventDefault();
     if (passcode === DEFAULT_PASSCODE) {
-      sessionStorage.setItem('somnath_admin_logged_in', 'true');
+      sessionStorage.setItem('ramdev_admin_logged_in', 'true');
       setIsLoggedIn(true);
       setLoginError('');
       loadDashboardData();
@@ -138,7 +143,7 @@ export default function Admin() {
   };
 
   const handleLogout = () => {
-    sessionStorage.removeItem('somnath_admin_logged_in');
+    sessionStorage.removeItem('ramdev_admin_logged_in');
     setIsLoggedIn(false);
     setPasscode('');
   };
@@ -158,7 +163,7 @@ export default function Admin() {
     if (isSupabaseConfigured) {
       try {
         const { error } = await supabase
-          .from('somnath_inquiries')
+          .from('ramdev_inquiries')
           .update({ status: newStatus })
           .eq('id', id);
 
@@ -177,7 +182,7 @@ export default function Admin() {
         return inq;
       });
       setInquiries(updated);
-      localStorage.setItem('somnath_inquiries', JSON.stringify(updated));
+      localStorage.setItem('ramdev_inquiries', JSON.stringify(updated));
       triggerSuccess('Inquiry status updated.');
     }
   };
@@ -188,7 +193,7 @@ export default function Admin() {
     if (isSupabaseConfigured) {
       try {
         const { error } = await supabase
-          .from('somnath_inquiries')
+          .from('ramdev_inquiries')
           .delete()
           .eq('id', id);
 
@@ -202,7 +207,7 @@ export default function Admin() {
     } else {
       const filtered = inquiries.filter(inq => inq.id !== id);
       setInquiries(filtered);
-      localStorage.setItem('somnath_inquiries', JSON.stringify(filtered));
+      localStorage.setItem('ramdev_inquiries', JSON.stringify(filtered));
       triggerSuccess('Inquiry deleted.');
     }
   };
@@ -283,7 +288,7 @@ export default function Admin() {
     if (isSupabaseConfigured) {
       try {
         const { data, error } = await supabase
-          .from('somnath_updates')
+          .from('ramdev_updates')
           .insert([added])
           .select();
 
@@ -303,7 +308,7 @@ export default function Admin() {
       const addedLocal = { ...added, id: `u-${Date.now()}` };
       const updatedList = [addedLocal, ...updates];
       setUpdates(updatedList);
-      localStorage.setItem('somnath_updates', JSON.stringify(updatedList));
+      localStorage.setItem('ramdev_updates', JSON.stringify(updatedList));
       setNewUpdate({ title: '', category: 'Plant Operations', content: '' });
       triggerSuccess('Daily Update posted successfully.');
     }
@@ -315,7 +320,7 @@ export default function Admin() {
     if (isSupabaseConfigured) {
       try {
         const { error } = await supabase
-          .from('somnath_updates')
+          .from('ramdev_updates')
           .delete()
           .eq('id', id);
 
@@ -329,7 +334,7 @@ export default function Admin() {
     } else {
       const filtered = updates.filter(up => up.id !== id);
       setUpdates(filtered);
-      localStorage.setItem('somnath_updates', JSON.stringify(filtered));
+      localStorage.setItem('ramdev_updates', JSON.stringify(filtered));
       triggerSuccess('Update post removed.');
     }
   };
@@ -347,7 +352,7 @@ export default function Admin() {
     if (isSupabaseConfigured) {
       try {
         const { data, error } = await supabase
-          .from('somnath_quotes')
+          .from('ramdev_quotes')
           .insert([added])
           .select();
 
@@ -367,7 +372,7 @@ export default function Admin() {
       const addedLocal = { ...added, id: `q-${Date.now()}` };
       const updatedList = [addedLocal, ...quotes];
       setQuotes(updatedList);
-      localStorage.setItem('somnath_quotes', JSON.stringify(updatedList));
+      localStorage.setItem('ramdev_quotes', JSON.stringify(updatedList));
       setNewQuote({ text: '', author: '' });
       triggerSuccess('Motivational Quote added.');
     }
@@ -379,7 +384,7 @@ export default function Admin() {
     if (isSupabaseConfigured) {
       try {
         const { error } = await supabase
-          .from('somnath_quotes')
+          .from('ramdev_quotes')
           .delete()
           .eq('id', id);
 
@@ -393,7 +398,7 @@ export default function Admin() {
     } else {
       const filtered = quotes.filter(q => q.id !== id);
       setQuotes(filtered);
-      localStorage.setItem('somnath_quotes', JSON.stringify(filtered));
+      localStorage.setItem('ramdev_quotes', JSON.stringify(filtered));
       triggerSuccess('Quote removed.');
     }
   };
@@ -450,7 +455,7 @@ export default function Admin() {
     if (isSupabaseConfigured) {
       try {
         const { data, error } = await supabase
-          .from('somnath_gallery')
+          .from('ramdev_gallery')
           .insert([{ ...added, created_at: new Date().toISOString() }])
           .select();
 
@@ -470,7 +475,7 @@ export default function Admin() {
     } else {
       const updatedList = [added, ...galleryItems];
       setGalleryItems(updatedList);
-      localStorage.setItem('somnath_gallery_items', JSON.stringify(updatedList));
+      localStorage.setItem('ramdev_gallery_items', JSON.stringify(updatedList));
       setNewPhoto({ title: '', category: 'factory', image: '' });
       setFileInputKey(prev => prev + 1);
       triggerSuccess('Photo added to media gallery.');
@@ -483,7 +488,7 @@ export default function Admin() {
     if (isSupabaseConfigured && id) {
       try {
         const { error } = await supabase
-          .from('somnath_gallery')
+          .from('ramdev_gallery')
           .delete()
           .eq('id', id);
 
@@ -497,7 +502,7 @@ export default function Admin() {
     } else {
       const filtered = galleryItems.filter((_, idx) => idx !== index);
       setGalleryItems(filtered);
-      localStorage.setItem('somnath_gallery_items', JSON.stringify(filtered));
+      localStorage.setItem('ramdev_gallery_items', JSON.stringify(filtered));
       triggerSuccess('Photo removed from media gallery.');
     }
   };
@@ -568,7 +573,7 @@ export default function Admin() {
                       type={showPasscode ? 'text' : 'password'}
                       value={passcode}
                       onChange={(e) => setPasscode(e.target.value)}
-                      placeholder="••••••••••••••"
+                      placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
                       className="w-full pl-4 pr-10 py-3 bg-[#0F1115] border border-white/10 focus:border-accent text-sm text-white rounded-lg outline-none transition-colors font-mono"
                     />
                     <button
@@ -609,7 +614,7 @@ export default function Admin() {
                   <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-accent font-sans">Management Panel</span>
                 </div>
                 <h1 className="text-3xl font-extrabold text-white font-display tracking-tight leading-none">
-                  Somnath Admin Dashboard
+                  Ramdev Admin Dashboard
                 </h1>
               </div>
 
@@ -626,23 +631,49 @@ export default function Admin() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
               
               {/* Tab Navigation Column (3 Cols) */}
-              <div className="lg:col-span-3 space-y-3">
+              <div className="lg:col-span-3 space-y-2">
+                {/* Business Ops Group */}
+                <p className="text-[10px] uppercase tracking-widest text-[#FF9F1C] font-bold px-1 pt-1">Business</p>
                 {[
-                  { id: 'inquiries', label: 'Inquiry Messages', icon: MessageSquare, count: inquiries.filter(i => i.status === 'unread').length },
-                  { id: 'images', label: 'Image Override Manager', icon: LayoutDashboard },
-                  { id: 'gallery', label: 'Media Gallery Photos', icon: ImageIcon }
+                  { id: 'invoices', label: 'Invoices', icon: Receipt },
+                  { id: 'parties', label: 'Party Master', icon: Users },
+                  { id: 'purchases', label: 'Purchase Register', icon: ShoppingCart },
+                  { id: 'stock', label: 'Stock Register', icon: Package },
                 ].map((tab) => (
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`w-full p-4 rounded-xl text-left text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-between border cursor-pointer ${
+                    className={`w-full p-3.5 rounded-xl text-left text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-between border cursor-pointer ${
                       activeTab === tab.id
                         ? 'bg-accent text-primary border-accent shadow-premium'
                         : 'bg-[#181B22] text-gray-400 border-white/10 hover:border-accent/40 hover:text-white'
                     }`}
                   >
                     <div className="flex items-center space-x-3">
-                      <tab.icon size={16} />
+                      <tab.icon size={15} />
+                      <span>{tab.label}</span>
+                    </div>
+                  </button>
+                ))}
+
+                {/* Website Ops Group */}
+                <p className="text-[10px] uppercase tracking-widest text-gray-500 font-bold px-1 pt-3">Website</p>
+                {[
+                  { id: 'inquiries', label: 'Inquiry Messages', icon: MessageSquare, count: inquiries.filter(i => i.status === 'unread').length },
+                  { id: 'images', label: 'Image Manager', icon: LayoutDashboard },
+                  { id: 'gallery', label: 'Media Gallery', icon: ImageIcon }
+                ].map((tab) => (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`w-full p-3.5 rounded-xl text-left text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-between border cursor-pointer ${
+                      activeTab === tab.id
+                        ? 'bg-accent text-primary border-accent shadow-premium'
+                        : 'bg-[#181B22] text-gray-400 border-white/10 hover:border-accent/40 hover:text-white'
+                    }`}
+                  >
+                    <div className="flex items-center space-x-3">
+                      <tab.icon size={15} />
                       <span>{tab.label}</span>
                     </div>
                     {tab.count !== undefined && tab.count > 0 && (
@@ -757,9 +788,9 @@ export default function Admin() {
                     <div className="space-y-6">
                       {[
                         { key: 'home_hero_bg', label: 'Home Page Hero Background', desc: 'Main full-bleed background displayed in the landing section.' },
-                        { key: 'peanut', label: '90mm Biomass Briquettes (બાયોમાસ બ્રિકેટ્સ) Image', desc: 'Product card image and product page illustration for 90mm Biomass Briquettes.' },
-                        { key: 'wheat', label: 'Eco-Friendly Bio-Coal (બાયો-કોલસા) Image', desc: 'Product card and details page illustration for Eco-Friendly Bio-Coal.' },
-                        { key: 'kabuli', label: 'Industrial Boiler Fuel (ઔદ્યોગિક બોઈલર બળતણ) Image', desc: 'Product card and details page illustration for Industrial Boiler Fuel.' },
+                        { key: 'peanut', label: '90mm Biomass Briquettes (àª¬àª¾àª¯à«‹àª®àª¾àª¸ àª¬à«àª°àª¿àª•à«‡àªŸà«àª¸) Image', desc: 'Product card image and product page illustration for 90mm Biomass Briquettes.' },
+                        { key: 'wheat', label: 'Eco-Friendly Bio-Coal (àª¬àª¾àª¯à«‹-àª•à«‹àª²àª¸àª¾) Image', desc: 'Product card and details page illustration for Eco-Friendly Bio-Coal.' },
+                        { key: 'kabuli', label: 'Industrial Boiler Fuel (àª”àª¦à«àª¯à«‹àª—àª¿àª• àª¬à«‹àªˆàª²àª° àª¬àª³àª¤àª£) Image', desc: 'Product card and details page illustration for Industrial Boiler Fuel.' },
                         { key: 'cards_img', label: 'Business Card Graphic', desc: 'Digital Card physical layout mockup displayed on Home page.' },
                         { key: 'machine_mayor', label: 'Plant Machinery Image', desc: 'Large banner image displayed in the About Us page.' }
                       ].map((imgItem) => {
@@ -875,7 +906,7 @@ export default function Admin() {
                                   <ImageIcon size={20} className="stroke-[1.5]" />
                                 </div>
                                 <div className="text-xs text-gray-400">
-                                  {newPhoto.image ? '✓ Image Loaded' : 'Click to select photo file'}
+                                  {newPhoto.image ? 'âœ“ Image Loaded' : 'Click to select photo file'}
                                 </div>
                                 <p className="text-[9px] text-gray-500">Supports PNG, JPG, JPEG</p>
                               </div>
@@ -940,6 +971,58 @@ export default function Admin() {
                   </div>
                 )}
 
+                {/* INVOICES TAB */}
+                {activeTab === 'invoices' && (
+                  <div className="space-y-6">
+                    <div className="border-b border-white/10 pb-4">
+                      <h3 className="font-display font-extrabold text-xl text-white flex items-center gap-2">
+                        <Receipt className="text-accent" size={20} /> Invoice Management
+                      </h3>
+                      <p className="text-xs text-gray-400 font-light mt-1">Create GST-compliant tax invoices. Download PDF, E-Invoice JSON & E-Way Bill JSON.</p>
+                    </div>
+                    <InvoiceList onSuccess={triggerSuccess} />
+                  </div>
+                )}
+
+                {/* PARTY MASTER TAB */}
+                {activeTab === 'parties' && (
+                  <div className="space-y-6">
+                    <div className="border-b border-white/10 pb-4">
+                      <h3 className="font-display font-extrabold text-xl text-white flex items-center gap-2">
+                        <Users className="text-accent" size={20} /> Party Master
+                      </h3>
+                      <p className="text-xs text-gray-400 font-light mt-1">Manage customers and suppliers. GSTIN validation with state auto-fill.</p>
+                    </div>
+                    <PartyMaster onSuccess={triggerSuccess} />
+                  </div>
+                )}
+
+                {/* PURCHASE REGISTER TAB */}
+                {activeTab === 'purchases' && (
+                  <div className="space-y-6">
+                    <div className="border-b border-white/10 pb-4">
+                      <h3 className="font-display font-extrabold text-xl text-white flex items-center gap-2">
+                        <ShoppingCart className="text-accent" size={20} /> Purchase Register
+                      </h3>
+                      <p className="text-xs text-gray-400 font-light mt-1">Record RD (Registered Dealer) and URD (Unregistered Dealer) purchases with auto GST calculation.</p>
+                    </div>
+                    <PurchaseRegister onSuccess={triggerSuccess} />
+                  </div>
+                )}
+
+                {/* STOCK REGISTER TAB */}
+                {activeTab === 'stock' && (
+                  <div className="space-y-6">
+                    <div className="border-b border-white/10 pb-4">
+                      <h3 className="font-display font-extrabold text-xl text-white flex items-center gap-2">
+                        <Package className="text-accent" size={20} /> Stock Register
+                      </h3>
+                      <p className="text-xs text-gray-400 font-light mt-1">Track raw material (groundnut biomass) and finished goods (briquettes) separately with live balance.</p>
+                    </div>
+                    <StockRegister onSuccess={triggerSuccess} />
+                  </div>
+                )}
+
               </div>
             </div>
 
@@ -950,3 +1033,4 @@ export default function Admin() {
     </div>
   );
 }
+

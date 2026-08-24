@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+/* stylelint-disable-next-line at-rule-no-unknown */
 @theme {
   --color-primary: #0F1115;
   --color-surface: #181B22;
@@ -121,7 +122,9 @@
 .text-gradient {
   background: linear-gradient(135deg, #ffffff 30%, #FF9F1C 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 .gold-gradient {
@@ -191,5 +194,26 @@
   opacity: 0.65;
 }
 
+/* Admin Panel Input Utility */
+.input-admin {
+  background-color: #0F1115;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  color: #ffffff;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.input-admin:focus {
+  border-color: #FF9F1C;
+}
+.input-admin::placeholder {
+  color: rgba(255, 255, 255, 0.25);
+}
+.input-admin option {
+  background-color: #181B22;
+  color: #ffffff;
+}
 
 
