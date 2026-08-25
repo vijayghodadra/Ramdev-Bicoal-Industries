@@ -1,4 +1,4 @@
-﻿import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
@@ -253,7 +253,7 @@ export default function Contact() {
                   <div>
                     <h4 className="font-display font-bold text-sm text-white">Operations Hours</h4>
                     <p className="text-xs text-gray-400 mt-1 leading-relaxed font-light">
-                      Monday â€“ Saturday: 8:00 AM â€“ 8:00 PM <br />
+                      Monday - Saturday: 8:00 AM - 8:00 PM <br />
                       Sunday: Plant Maintenance / Closed
                     </p>
                   </div>

@@ -906,7 +906,7 @@ export default function Admin() {
                                   <ImageIcon size={20} className="stroke-[1.5]" />
                                 </div>
                                 <div className="text-xs text-gray-400">
-                                  {newPhoto.image ? 'âœ“ Image Loaded' : 'Click to select photo file'}
+                                  {newPhoto.image ? '✓ Image Loaded' : 'Click to select photo file'}
                                 </div>
                                 <p className="text-[9px] text-gray-500">Supports PNG, JPG, JPEG</p>
                               </div>
