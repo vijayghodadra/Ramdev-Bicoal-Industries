@@ -573,7 +573,7 @@ export default function Admin() {
                       type={showPasscode ? 'text' : 'password'}
                       value={passcode}
                       onChange={(e) => setPasscode(e.target.value)}
-                      placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
+                      placeholder="••••••••"
                       className="w-full pl-4 pr-10 py-3 bg-[#0F1115] border border-white/10 focus:border-accent text-sm text-white rounded-lg outline-none transition-colors font-mono"
                     />
                     <button
