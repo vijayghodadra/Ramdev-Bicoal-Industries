@@ -1,4 +1,4 @@
-﻿import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Lock, Eye, EyeOff, LayoutDashboard, MessageSquare, 
@@ -136,7 +136,7 @@ export default function Admin() {
       setIsLoggedIn(true);
       setLoginError('');
       loadDashboardData();
-      triggerSuccess('Access Granted. Welcome to Somnath Dashboard.');
+      triggerSuccess('Access Granted. Welcome to Ramdev Dashboard.');
     } else {
       setLoginError('Invalid Administrator Passcode.');
     }

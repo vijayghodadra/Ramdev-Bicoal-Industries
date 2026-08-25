@@ -277,7 +277,7 @@ export default function Home() {
                       />
                     ) : (
                       <img loading="lazy" decoding="async" src={slideConfig[currentSlide].image}
-                        alt={`Somnath slide ${currentSlide}`}
+                        alt={`Ramdev slide ${currentSlide}`}
                         className={`relative z-10 w-full h-full ${slideConfig[currentSlide].fit} ${slideConfig[currentSlide].position}`}
                       />
                     )}
@@ -497,7 +497,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Item 2: Jay Somnath Mahadev Video (Full aspect ratio preserved, zero cutoff) */}
+            {/* Item 2: Jay Ramdev Mahadev Video (Full aspect ratio preserved, zero cutoff) */}
             <div className="group relative rounded-2xl overflow-hidden border border-white/10 bg-[#181B22] shadow-premium flex flex-col hover:border-accent/30 transition-all duration-300">
               <div className="relative h-64 sm:h-80 overflow-hidden bg-transparent flex items-center justify-center">
                 <video

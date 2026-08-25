@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://somnathindustries.com/sitemap.xml
+Sitemap: https://ramdev-biocoal-industries.vercel.app/sitemap.xml
